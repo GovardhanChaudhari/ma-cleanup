@@ -1,0 +1,6 @@
+template(name="input_text_area")
+   textarea(rows="7",cols="50",name="#{name}",id="#{name}").form-control= value
+
+template(name="labeled_input_text_area")
+   +label
+   +input_text_area

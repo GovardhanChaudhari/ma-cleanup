@@ -1,0 +1,9 @@
+template(name="backup")
+	button.btn.btn-success.backup_model_instance Backup All Model Data
+	if isInRole 'admin'
+		br
+		br
+		button.btn.btn-success.backup_model_def Backup Model Definitions
+		br
+		br
+		button.btn.btn-success.backup_all Backup All

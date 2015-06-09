@@ -1,0 +1,19 @@
+template(name="field_def_table_header")
+	th #{name}
+
+template(name="field_def_table_row")
+	tr.table_data_row
+		td.table-row-buttons
+			+button_edit_field_row(rowIndex=index)
+			+button_delete_field_row(rowIndex=index)
+		each fieldNames
+			+field_def_table_cell_value
+		
+template(name="field_def_table_cell_value")
+	td= value
+
+template(name="button_edit_field_row")
+	a(href="#").glyphicon.glyphicon-edit.edit_row
+
+template(name="button_delete_field_row")
+	a(href="#").glyphicon.glyphicon-trash.delete_field_row

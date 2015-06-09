@@ -1,0 +1,45 @@
+template(name="model_def_form")
+	+labeled_input_text(name="name" parent_form="model_def_form" label = "Model Name")
+	br
+	br
+	if isEditing
+		+array_table(data=fields)
+		+button_add_new_field
+		br
+		label Fields:
+		table.table.table-striped.table-bordered.table-condenced.table-hover
+			thead
+				tr
+					th
+						if isInRole 'admin'
+							+button_remove_all
+
+					+each fieldNames
+						+field_def_table_header
+			tbody
+				each fields
+					+field_def_table_row
+
+	+new_data_list(label = "Owner Id" name="ownerId" id="ownerId" model_name="user" display_value="email" option_value="_id" parent_form="model_def_form")
+	br
+	br
+	+checkbox(label="Show Table Operation" name="showTableOperation" id="showTableOperation" parent_form="model_def_form")
+	br
+	br
+	+checkbox(label="Is Base Model" name="isBaseModel" id="isBaseModel" parent_form="model_def_form")
+	br
+	br
+	+labeled_input_text(name="summaryProperty" parent_form="model_def_form" label = "Summary Property Name")
+	br
+	br
+	if isEditing
+		+button_update_model_def_form
+	else
+		+button_save_model_def_form
+	
+	+button_cancel_model_def_form
+
+template(name="button_add_new_field")
+	a(href="/models/#{modelId}/fields/new").btn.btn-success Add New Field
+
+

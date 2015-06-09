@@ -1,0 +1,16 @@
+template(name="layout")
+	+nav
+	.row
+		+side_navbar
+		.col-xs-10
+			+yield
+	+footer
+	
+template(name="footer")
+	footer.footer
+		div.container
+			span Develped By Govardhan Chaudhari  @ #{currentYear}
+			img(src="black-fb-icon.png" height="20px")
+			a(href="https://twitter.com/gvc321")
+				img(src="black-twitter-icon.png" height="20px")
+			img(src="black-linkedin-icon.png" height="20px")

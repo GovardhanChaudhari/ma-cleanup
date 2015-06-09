@@ -1,0 +1,5 @@
+- The event handeling in template events add following to prevent event propogation and action
+	evt.preventDefalt();
+	evt.stopPropogation();
+	
+- While creating a new templale for a record, try to assign the record id to the id attribute of div or component you are going to add.	

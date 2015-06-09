@@ -1,0 +1,4 @@
+delete,insert,name,read,update
+"true","true","admin","true","true"
+"false","false","user","true","false"
+"true","true","webmaster","true","true"

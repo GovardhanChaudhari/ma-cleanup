@@ -1,0 +1,13 @@
+Current Issues
+===============
+
+- If in betweem model field is removed, blank model field is created.
+	-cause
+		- array indexing, model field naming is inconsistent
+
+[d]- Clicking on cancel button of import csv dialog, results in page refresh
+- When model definition is removed, the corresponding collection should be removed from 	db
+- Renaming model name should copy model data under new model name
+- Renaming field name should copy old values under new field name
+- when field type is set to combo, it should not display checkbox for multiple
+-

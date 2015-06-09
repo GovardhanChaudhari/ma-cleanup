@@ -1,0 +1,14 @@
+template(name="field_type_dropdown")
+	+field_type_data_list_input
+	+field_type_data_list
+
+template(name="field_type_data_list")
+	datalist(name=name,id=name)
+		+each options
+			+field_type_data_list_option data=.
+
+template(name="field_type_data_list_input")
+	input(type="text",list=name,value=value)
+
+template(name="field_type_data_list_option")
+	option(value=value)=value

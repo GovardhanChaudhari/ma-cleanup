@@ -1,0 +1,67 @@
+template(name="modelList")
+	if currentUser
+		h1.page-header #{modelName} 
+			small List
+
+		.container-fluid
+			if canInsert
+				if isModelDef
+					+button_add_model_def
+				else
+					+button_add_model
+			+button_export
+			+button_export_to_pdf
+			+button_import
+			div Total Records: #{totalRecords}
+			.row-fluid
+				table.table.table-striped.table-bordered.table-condenced.table-hover
+					thead
+						tr
+							th
+								if canDelete
+									+button_remove_all
+							+each fields
+								+table_header
+						tr
+							td
+							each fields
+								td
+									+search
+					tbody
+						each models
+							+table_row
+						if showTableOperation
+							tr
+								td
+								each fields
+									+table_operation_header
+							tr
+								td
+								each fields
+									+table_operation_value
+
+template(name="table_header")
+	if showHeader
+		th #{name}
+
+template(name="total_records")
+	div
+		Total Records: #{totalRecords}
+
+template(name="table_operation")
+	table.table.table-striped.table-bordered.table-condenced.table-hover
+		thead
+			tr
+				+each fields
+					+table_operation_header
+		tbody
+			tr
+				each fields
+					+table_operation_value
+
+template(name="table_operation_header")
+	th Total
+
+template(name="table_operation_value")
+	td
+		span #{value}

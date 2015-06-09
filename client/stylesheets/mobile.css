@@ -1,0 +1,20 @@
+.top_bar{
+    background-color: #2cc5d2;
+    height: 15%;
+}
+
+.list_details_header{
+    font-size: large;
+}
+
+.allign-center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.btn-mobile{
+    width:200px;
+    margin-bottom: 3px;
+}
+

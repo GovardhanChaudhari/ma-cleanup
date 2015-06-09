@@ -1,0 +1,34 @@
+template(name="side_navbar")
+	if currentUser
+		nav.col-xs-2.bs-docs-sidebar
+			ul(id="sidebar").nav.nav-stacked
+				if isAdminRole
+					li
+						a(href="#") Base Models
+						ul.nav.nav-stacked
+							+each baseModels
+								+model
+				li
+					a(href="#") User Models
+					ul.nav.nav-stacked
+						+each userModels
+							+model
+				if isAdminRole
+					li
+						a(href="/fdr_dashboard").fdr_dashboard FDR Dashboard
+					li
+						a(href="/question_bank").question_bank Question Bank
+				li
+					a(href="#") Admin Tasks
+						ul.nav.nav-stacked
+							li
+								a(href="/backup").backup BackUp
+							if isAdminRole
+								li
+									a(href="/database_tasks").database_tasks Database Tasks
+								li
+									a(href="/email").email_form Email
+
+template(name="model")
+	li
+		a(href="{{pathFor route='showmodel'}}").model=name

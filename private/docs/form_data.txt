@@ -1,0 +1,119 @@
+- problem 
+==========
+	
+	- How to get form data?
+
+	- eg. definition of model definition
+
+		{
+			name:"model",
+			fields:[
+				{name:"name",type:"string"},
+				{name:"fields",type:"array"}
+			]
+		} 
+
+		- definition of model definition instance
+
+		{
+			name:"customer",
+			fields:[
+				{name:"first_name",type:"string"},
+				{name:"address",type:"text"}
+			]
+		}
+
+		- model instance 
+
+		{
+			first_name:"govardhan",
+			address:"address 1 3 4"
+		}
+
+- sol
+=====
+	
+	case 1 : form data of model definition instance
+
+		case 1: adding new model definition
+		
+			- The model definition has 'fields' attribute which is of type array. ie array of fields
+				
+				eg. fields:[
+						{name:"first_name",type:"string"},
+						{name:"address",type:"text"}
+					]
+
+			- Now an element in this array has two properties. ie name and type. But in future new properties might be added such as validators.
+
+			- When model definition form is shown for adding a new model definition instance, the form has following inputs:
+
+				- A text box for model definition name
+				- A fields input sub form which has following inputs
+					-An input for name of field
+					-An input for type of field
+
+				- Note that user can add more fields. so the fields input sub form is reapeted as per user's choice. 
+
+			- Also note that the model definition of model definition instance is stored in the ModelDefDb having following definition:
+			
+				- {
+					name:"model",
+					fields:[
+						{name:"name"},
+						{name:"fields",type:"array"}
+					]
+				} 
+			
+			- How do we know, whether are we adding a model definition or model instance
+
+				- As we know there is an id stored in session under attribute name Current_Model_Id
+				- Access the ModelDefDb with this id and check the found object has the name property equals to "model", If so then we are adding a model definition.
+
+			- How to get model definition instance data from model definition form?
+
+				- case 1 : field has simple type
+				
+					- Here we want the model definition name, which is of 'simple type' .ie 'string', so we can follow case 1 of case : form data of model instance (ie case 1: adding new model instance)
+
+				- case 2 : field has an array type
+
+					- Here we want to get data of fields input sub form which might be reapeted several times.
+
+
+		case 2: updating existing model definition
+
+			-
+
+	case 2: form data of model instance
+		
+		case 1: adding new model instance
+			
+			- stp1: we need model definition for which we are going to create model instance
+
+				- model definition instance id is stored in session with attribute Current_Model_Id
+			
+			- stp2: we need the field names of model instance to get the each field value
+				
+				- stp1 : get model definition instance id and get model definition instance using ModelDefDb
+
+				- stp2:  access fields attribute of model definition instance
+
+				- stp3: create a temp variable which will be used to store the all form data
+
+					- eg. var formData = {first_name:"govardhan",address:"address 1 2 3"}
+
+				- stp4: iterate over each field (assuming field type is simple, consider other case where field type is array : TODO)
+					
+					- access the form data with field.name attribure
+
+						- eg. template.find("#" + field.name).value
+
+					- store this form data in above create temp variable
+
+				- return temp variable
+		
+		case 2: updating existed model instance
+			
+			- stp1 : follow step 1,2  of case 1 of above (case 1 of case 2)
+

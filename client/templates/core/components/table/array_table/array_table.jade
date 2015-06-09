@@ -1,0 +1,29 @@
+template(name="array_table")
+   table.table.table-striped.table-bordered.table-condenced.table-hover
+      thead
+         tr
+            th
+               if isInRole 'admin'
+                  +array_table_button_delete_all
+            +each columns
+               +array_table_header
+      tbody
+         each rows
+            +array_table_row
+
+template(name="array_table_row")
+   tr.table_data_row
+      td.table-row-buttons
+         +array_table_button_edit_row(rowIndex=index)
+         +array_table_button_delete_row(rowIndex=index)
+      each columns
+         +array_table_cell_value
+
+template(name="array_table_cell_value")
+   td= value
+
+template(name="array_table_header")
+   th #{name}
+
+template(name="button_delete_row")
+   a(href="#").glyphicon.glyphicon-trash.delete_field_row

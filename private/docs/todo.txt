@@ -1,0 +1,37 @@
+TODOS
+======
+
+	- image tag
+	- file upload and save into db tag	
+
+
+problem : 
+	Do I need to hard code the CRUD operation for the Model definitions or I can use the existing
+generic logic to perform the CRUD.
+
+Sol:
+
+	- in generic CURD check the model name, if it is 'model' then use ModelDefDb else subscribe
+		the model.
+		
+	- publish the model def where it is created. ie in model_db.js
+
+*********************************************************************************
+
+problem: during creation of model definitions.
+
+
+*********************************************************************************
+
+problem : import csv
+
+	case 1: import model definitions
+		case 1: Model definition is not already exist
+		sol: 
+			1: insert model definition in modeldb
+			2: publish model on server
+			3: subscribe model from client
+			4: 
+		case 2: Model definition already exsist
+	case 2: import model instance data
+		constraint: model definition must exist before importing model instance data

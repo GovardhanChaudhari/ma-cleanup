@@ -1,0 +1,11 @@
+template(name="home_page")
+
+	if currentUser
+		if isPhone
+			+model_def_list_phone
+	else
+		h1 Welcome To Meteor Admin
+		h2 Features
+		ul
+			li Dynamically add new tables
+			li Mobile Friendly User Interface

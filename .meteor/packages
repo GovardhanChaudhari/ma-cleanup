@@ -1,0 +1,22 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+reactive-var
+jquery
+mrt:bootstrap-3
+accounts-base
+accounts-password
+mquandalle:jade
+iron:router
+alanning:roles
+dburles:mongo-collection-instances
+mizzao:jquery-ui
+dsyko:meteor-node-csv
+nimble:restivus
+email
+mystor:device-detection
+ian:accounts-ui-bootstrap-3

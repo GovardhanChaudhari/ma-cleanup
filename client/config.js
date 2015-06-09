@@ -1,0 +1,1 @@
+appTitle = "Meteor Admin"

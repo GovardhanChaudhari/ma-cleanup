@@ -1,0 +1,11 @@
+- Application Flow
+=====================
+
+	- Global are initialized when 000globals dir is loaded.
+	- When model_def_db.js file is loaded
+		- Model definition is defined in file model_def_db.js referenced by ModelDef.
+		- This and other model definitions are added in model definition db refered as 'model' mongo collection.
+		- 'model' collection is published, and ready notification is sent.
+
+	- At client side (nav.js), when nav template is created, 'model' collection is subscribed.
+		- When 'model' subscription is ready, other model definitions stored in 'model' definitions are published and subscribed.

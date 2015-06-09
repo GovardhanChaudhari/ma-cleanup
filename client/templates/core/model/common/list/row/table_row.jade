@@ -1,0 +1,19 @@
+template(name="table_row")
+	tr.table_data_row
+		td.table-row-buttons
+			if isModelDef
+				if canUpdate
+					+button_edit_model_def_row
+			else
+				if canUpdate
+					+button_edit_row
+			if canDelete
+				+button_remove_row
+		each fields
+			+table_cell_value
+		
+
+template(name="table_cell_value")
+	if showValue
+		td= value
+
