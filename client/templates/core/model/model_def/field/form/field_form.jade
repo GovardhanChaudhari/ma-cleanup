@@ -1,23 +1,17 @@
 template(name="field_form")
 	form
-		label Name:
-		input(type="text" name="name",id="name",value=name)
+		+labeled_input_text(name="name" parent_form="field_form" label = "Field Name")
 
 		br
-		label Type:
-		+field_type_dropdown(name="type" model_name="type" display_value="name" value=type)
+		+new_type_field_data_list(label="Type" name="type" model_name="type" display_value="name" parent_form="field_form")
 
 		br
-		label Label:
-		input(type="text" name="label",id="label",value=label)
+		+labeled_input_text(name="label" parent_form="field_form" label = "Field Label")
 
 		if isCombo
 			+combo_fields
-
 		br
-		br
-		label Aggregate Operation:
-		input(type="text" name="operation",id="operation",value=operation)
+		+labeled_input_text(name="operation" parent_form="field_form" label = "Aggregate Operation")
 
 		+affect_fields
 
@@ -32,52 +26,37 @@ template(name="field_form")
 
 template(name="combo_fields")
 	br
-	label(for="model_name").field Model Name:
-	input.field(type="text", value=model_name, name="model_name", id="model_name").field
+	+labeled_input_text(name="model_name" parent_form="field_form" label = "Model Name")
 
 	br
-	label(for="display_value").field Display Value:
-	input.field(type="text", value=display_value, name="display_value", id="display_value").field
+	+labeled_input_text(name="display_value" parent_form="field_form" label = "Display Value")
 
 	br
-	label(for="option_value").field Option Value:
-	input.field(type="text", value=option_value, name="option_value", id="option_value").field
+	+labeled_input_text(name="option_value" parent_form="field_form" label = "Option Value")
 
 	if isMultiple
 		br
-		label(for="multiple").field Multiple:
-		+field_checkbox(name="multiple")
+		+checkbox(name="multiple" label="Is Multiple" parent_form="field_form")
+
 
 template(name="affect_fields")
+	br
+	+checkbox(name="has_effect" label="Has Effect On Other Model" parent_form="field_form")
 
 	br
-	label(for="has_effect").field Has Effect On Other Model:
-	+field_checkbox(name="has_effect")
+	+labeled_input_text(name="affect_model_name" parent_form="field_form" label = "Model Name")
 
 	br
-	label(for="model_name").field Model Name:
-	input.field(type="text", value=affect_model_name, name="affect_model_name", id="affect_model_name").field
+	+labeled_input_text(name="affect_model_property" parent_form="field_form" label = "Model Property Name")
 
 	br
-	label(for="model property").field Model Property:
-	input.field(type="text", value=affect_model_property, name="affect_model_property", id="affect_model_property").field
+	+labeled_input_text(name="affect_filter_property" parent_form="field_form" label = "Filter Property Name")
 
 	br
-	label(for="filter property").field Filter Property:
-	input.field(type="text", value=affect_filter_property, name="affect_filter_property", id="affect_filter_property").field
-
-	br
-	label(for="affect_operation").field Operation:
-	input.field(type="text", value=affect_operation, name="affect_operation", id="affect_operation").field
+	+labeled_input_text(name="affect_operation" parent_form="field_form" label = "Operation")
 
 template(name="add_new_field_link")
 	a.field.add_new_field_link(href="#") Add New Field
-
-template(name="remove_field_link")
-	a.remove_field_link(href="#") X
-
-template(name="model_name_text")
-	+text_component name=name value=value				
 
 template(name="button_save_field_form")
 	a(href="/models/#{modelId}/fields/new").btn.btn-success.save_field Save
@@ -87,6 +66,3 @@ template(name="button_update_field_form")
 
 template(name="button_cancel_field_form")
 	a(href="/modeldefs/#{modelId}/edit").btn Cancel
-
-template(name="field_checkbox")
-	input(type="checkbox", name="#{name}", id="#{name}", checked=modelValue)

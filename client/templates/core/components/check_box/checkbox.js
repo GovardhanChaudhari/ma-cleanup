@@ -16,6 +16,7 @@ Template.checkbox.rendered = function(){
 
 Template.checkbox.helpers({
     value:function(){
+        console.log("getting checkbox value");
         return ObjectUtils.stringToBoolean(ComponentHelpers.value.apply(this));
     }
 });

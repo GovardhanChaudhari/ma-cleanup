@@ -1,0 +1,15 @@
+template(name="data_list")
+	+label
+	+data_list_input
+	+data_list_internal
+
+template(name="data_list_internal")
+	datalist(name=name,id=name)
+		+each items
+			+data_list_option
+			
+template(name="data_list_input")
+	input(type="text",list=name,value=value).form-control
+
+template(name="data_list_option")
+	option(value=optionValue)=value

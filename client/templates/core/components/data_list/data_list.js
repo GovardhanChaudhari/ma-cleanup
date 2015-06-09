@@ -1,14 +1,14 @@
-Template.new_data_list.created = TemplateHelpers.setAppParentForm;
+Template.data_list.created = TemplateHelpers.setAppParentForm;
 
-Template.new_data_list.rendered = function(){
+Template.data_list.rendered = function(){
 	var template = this;
 	this.getValue = function(){
 		return ComponentHelpers.getDataListValue(template,template.data.name);
 	}
 };
 
-Template.model_def_data_list.helpers({
-	options:function(){
+Template.data_list_internal.helpers({
+	items:function(){
 		//return [{"_id":"1",f:"one"},{"_id":"2",f:"two"}];
 		//console.log(this);
 
@@ -24,24 +24,9 @@ Template.model_def_data_list.helpers({
 	}
 });
 
-Template.model_def_data_list_input.helpers({
-	value:function(){
-		//debugger;
-        var val = "";
-        if (Session.get(Editing_ModelDefId)){
-            // editing model def
-            var modelDefFormData = TemplateHelpers.getParentViewData(Blaze.currentView,"model_def_form");
-            val = modelDefFormData[this.name];
-        }else{
-            // creating new model def
-        }
+Template.data_list_input.helpers(ComponentHelpers.getComponentValueHelper());
 
-		return val;
-	}
-});
-
-
-Template.model_def_data_list_option.helpers({
+Template.data_list_option.helpers({
 	value:function(){
 		//console.log("accessed data list option value");
 		//debugger;

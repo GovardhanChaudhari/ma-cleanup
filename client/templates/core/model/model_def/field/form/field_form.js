@@ -110,21 +110,12 @@ Template.button_update_field_form.events({
 
 Template.field_form.created = function(){
 	this.isCombo = new ReactiveVar(false);
+	TemplateHelpers.setAppFormGetValueFunction.apply(this);
 };
-
-Template.field_checkbox.helpers({
-	modelValue:function(){
-		var modelRow = TemplateHelpers.getParentViewData(Blaze.currentView,"field_form");
-		return ObjectUtils.stringToBoolean(modelRow[this.name]);
-	}
-});
 
 Template.combo_fields.helpers({
 	isMultiple:function(){
         //debugger;
-        //var typeVal =
-		//var modelRow = TemplateHelpers.getParentViewData(Blaze.currentView,"field_form");
-		//return modelRow.type === Data_Type_DropDown;
         var field_form = TemplateHelpers.getParentTemplate(Template.instance(),"field_form");
         return field_form .isCombo.get();
 	}

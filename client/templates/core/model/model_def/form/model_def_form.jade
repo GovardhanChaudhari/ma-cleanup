@@ -3,24 +3,13 @@ template(name="model_def_form")
 	br
 	br
 	if isEditing
-		+array_table(data=fields)
 		+button_add_new_field
 		br
 		label Fields:
-		table.table.table-striped.table-bordered.table-condenced.table-hover
-			thead
-				tr
-					th
-						if isInRole 'admin'
-							+button_remove_all
+		+array_table(data=fields)
 
-					+each fieldNames
-						+field_def_table_header
-			tbody
-				each fields
-					+field_def_table_row
-
-	+new_data_list(label = "Owner Id" name="ownerId" id="ownerId" model_name="user" display_value="email" option_value="_id" parent_form="model_def_form")
+	br
+	+data_list(label = "Owner Id" name="ownerId" id="ownerId" model_name="user" display_value="email" option_value="_id" parent_form="model_def_form")
 	br
 	br
 	+checkbox(label="Show Table Operation" name="showTableOperation" id="showTableOperation" parent_form="model_def_form")

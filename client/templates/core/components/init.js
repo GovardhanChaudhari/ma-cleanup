@@ -1,5 +1,5 @@
 ArrayUtils.each(Single_Valued_Templates, function (templateName) {
-    Template[templateName].helpers(ComponentHelpers.value());
+    Template[templateName].helpers(ComponentHelpers.getComponentValueHelper());
 });
 
 ArrayUtils.each(App_Components,function(templateName){

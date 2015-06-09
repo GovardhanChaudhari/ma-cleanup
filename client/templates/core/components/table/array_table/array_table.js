@@ -4,7 +4,7 @@ Template.array_table.created = function(){
 };
 
 Template.array_table.rendered = function(){
-    console.count("array table render count");
+    //console.count("array table render count");
     //debugger;
     var templateInstance = this;
     var tableArrayData = this.data.data;
@@ -37,7 +37,7 @@ Template.array_table.helpers({
     },
 
     columns:function(){
-        console.log("array table accessed columns");
+        //console.log("array table accessed columns");
         return Template.instance().columns.get();
     }
 
@@ -53,7 +53,7 @@ Template.array_table_row.helpers({
 
 Template.array_table_header.helpers({
     name: function () {
-        console.log("table header : ",this.name);
+        //console.log("table header : ",this.name);
         return this.name;
     }
 });
@@ -61,8 +61,7 @@ Template.array_table_header.helpers({
 Template.array_table_cell_value.helpers({
     value: function () {
         var tableRow = TemplateHelpers.getParentViewData(Blaze.currentView,"array_table_row");
-        //var tableRow = TemplateHelpers.getParentFormData(Template.instance());
-        console.log("array table row value : ",tableRow, " context : ", this);
+        //console.log("array table row value : ",tableRow, " context : ", this);
         return tableRow.data[this.name];
     }
 });
