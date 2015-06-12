@@ -20,3 +20,11 @@ nimble:restivus
 email
 mystor:device-detection
 ian:accounts-ui-bootstrap-3
+cfs:filesystem
+momentjs:moment
+meteorhacks:npm
+
+
+npm-container
+udondan:jszip
+udondan:zipzap

@@ -20,6 +20,9 @@ meteor add meteorhacks:npm
 meteor add nimble:restivus
 meteor add email
 meteor add mystor:device-detection
+meteor add cfs:filesystem
+meteor add momentjs:moment
+meteor add udondan:zipzap
 
 meteor remove autopublish
 meteor remove insecure
