@@ -1,6 +1,6 @@
-Template.checkbox.created = TemplateHelpers.setAppParentForm;
+Template.labeled_checkbox.created = TemplateHelpers.setParentForm;
 
-Template.checkbox.rendered = function(){
+Template.labeled_checkbox.rendered = function(){
     var templateInstance = this;
     this.getValue = function(){
         // debugger;

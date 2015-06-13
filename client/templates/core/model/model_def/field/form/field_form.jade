@@ -50,7 +50,10 @@ template(name="affect_fields")
 	+labeled_input_text(name="affect_model_property" parent_form="field_form" label = "Model Property Name")
 
 	br
-	+labeled_input_text(name="affect_filter_property" parent_form="field_form" label = "Filter Property Name")
+	+labeled_input_text(name="source_affect_filter_property" parent_form="field_form" label = "Source Filter Property Name")
+
+	br
+	+labeled_input_text(name="dest_affect_filter_property" parent_form="field_form" label = "Destination Filter Property Name")
 
 	br
 	+labeled_input_text(name="affect_operation" parent_form="field_form" label = "Operation")

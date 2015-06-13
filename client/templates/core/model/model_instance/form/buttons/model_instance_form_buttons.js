@@ -77,18 +77,20 @@ Template.button_form_save.events({
                 //var sum =  ArrayUtils.sum(filteredModels,modelProperty,affectedModelField["type"]);
 
                 var destSearchData = {};
-                destSearchData[filterProperty] = value;
+                destSearchData[filterProperty] = data[filterProperty];
                 var modelInstance =  model.findOne(destSearchData);
-                if(operation === "add"){
-                    modelInstance[modelProperty] = parseInt(modelInstance[modelProperty]) + parseInt(data[modelProperty]);
-                }else if(operation === "remove"){
-                    modelInstance[modelProperty] = parseInt(modelInstance[modelProperty]) - parseInt(data[modelProperty]);
-                }else{
-                    console.log("Error: invalid affect operation: ", operation, "currently only support 'add' and 'remove'");
-                }
+                if(modelInstance){
+                    if(operation === "add"){
+                        modelInstance[modelProperty] = parseInt(modelInstance[modelProperty]) + parseInt(data[modelProperty]);
+                    }else if(operation === "remove"){
+                        modelInstance[modelProperty] = parseInt(modelInstance[modelProperty]) - parseInt(data[modelProperty]);
+                    }else{
+                        console.log("Error: invalid affect operation: ", operation, "currently only support 'add' and 'remove'");
+                    }
 
-                //TODO if modelInstance is not found add new one
-                DBUtils.update(model,modelInstance._id,modelInstance);
+                    //TODO if modelInstance is not found add new one
+                    DBUtils.update(model,modelInstance._id,modelInstance);
+                }
             }
         }
 

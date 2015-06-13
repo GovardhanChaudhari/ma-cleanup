@@ -12,10 +12,10 @@ template(name="model_def_form")
 	+data_list(label = "Owner Id" name="ownerId" id="ownerId" model_name="user" display_value="email" option_value="_id" parent_form="model_def_form")
 	br
 	br
-	+checkbox(label="Show Table Operation" name="showTableOperation" id="showTableOperation" parent_form="model_def_form")
+	+labeled_checkbox(label="Show Table Operation" name="showTableOperation" id="showTableOperation" parent_form="model_def_form")
 	br
 	br
-	+checkbox(label="Is Base Model" name="isBaseModel" id="isBaseModel" parent_form="model_def_form")
+	+labeled_checkbox(label="Is Base Model" name="isBaseModel" id="isBaseModel" parent_form="model_def_form")
 	br
 	br
 	+labeled_input_text(name="summaryProperty" parent_form="model_def_form" label = "Summary Property Name")

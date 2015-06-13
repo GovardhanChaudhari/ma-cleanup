@@ -51,16 +51,18 @@ Meteor.methods({
 
 						}
 						var searchOptions = {};
-						searchOptions[primaryKey] = obj[primaryKey];
+						//searchOptions[primaryKey] = obj[primaryKey];
 						console.log("finding record with search options : ", searchOptions);
+						model.insert(obj);
+						//TODO
 						var foundRecord = model.findOne(searchOptions);
-						if(foundRecord){
+						/*if(foundRecord){
 							console.log("***********************************found model, updating it, model : ",foundRecord);
 							DBUtils.update(model,foundRecord._id,obj);
 						}else{
 							console.log("importing json obj:",obj );
 							model.insert(obj);
-						}
+						}*/
 					});
 					return result;
 				}
