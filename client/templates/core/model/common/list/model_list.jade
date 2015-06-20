@@ -9,9 +9,11 @@ template(name="modelList")
 					+button_add_model_def
 				else
 					+button_add_model
-			+button_export
+			+button_export_csv
+			+button_export_json
 			+button_export_to_pdf
-			+button_import
+			+button_import_csv
+			+button_import_json
 			div Total Records: #{totalRecords}
 			.row-fluid
 				table.table.table-striped.table-bordered.table-condenced.table-hover
@@ -42,11 +44,7 @@ template(name="modelList")
 
 template(name="table_header")
 	if showHeader
-		th #{name}
-
-template(name="total_records")
-	div
-		Total Records: #{totalRecords}
+		th #{label}
 
 template(name="table_operation")
 	table.table.table-striped.table-bordered.table-condenced.table-hover

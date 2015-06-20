@@ -1,4 +1,4 @@
-Template.button_import.events({
+Template.button_import_csv.events({
     'click':function(evt,template){
         debugger;
         console.log("importing from csv");
@@ -30,6 +30,50 @@ Template.button_import.events({
                             console.log("failed to convert base64 to string, err : " + err);
                         }else{
                             var obj =  Meteor.call('importCsv',ModelHelpers.currentModel().name,primaryKey,result);
+                            debugger;
+                            console.log("import csv result: " , obj);
+                        }
+
+                    });
+                };
+                reader.readAsDataURL(file);
+
+                TemplateHelpers.removeTemplate(template);
+                console.log(file);
+            }
+        };
+        Template.file_upload_form.events(importCSVEvent);
+        TemplateHelpers.showTemplate("file_upload_form",modelFormTemplate);
+    }
+});
+
+
+Template.button_import_json.events({
+    'click':function(evt,template){
+        debugger;
+        console.log("importing from json");
+        var modelFormTemplate = TemplateHelpers.getParentTemplate(template,"modelList");
+
+        var importJSONEvent = {
+            'submit form':function(evt,template){
+                debugger;
+                console.log("uploading file ...");
+                //evt.preventDefault();
+                var file = template.find('#fileInput').files[0];
+
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    var data_url = e.target.result;
+                    var matches = data_url.match(/^data:.+\/(.+);base64,(.*)$/);
+                    var ext = matches[1];
+                    var base64_data = matches[2];
+
+                    Meteor.call('base64ToString',base64_data,function(err,result){
+                        if(err){
+                            debugger;
+                            console.log("failed to convert base64 to string, err : " + err);
+                        }else{
+                            var obj =  Meteor.call('importJSON',ModelHelpers.currentModel().name,primaryKey,result);
                             debugger;
                             console.log("import csv result: " , obj);
                         }

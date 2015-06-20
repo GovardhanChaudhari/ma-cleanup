@@ -36,12 +36,12 @@ template(name="combo_fields")
 
 	if isMultiple
 		br
-		+checkbox(name="multiple" label="Is Multiple" parent_form="field_form")
+		+labeled_checkbox(name="multiple" label="Is Multiple" parent_form="field_form")
 
 
 template(name="affect_fields")
 	br
-	+checkbox(name="has_effect" label="Has Effect On Other Model" parent_form="field_form")
+	+labeled_checkbox(name="has_effect" label="Has Effect On Other Model" parent_form="field_form")
 
 	br
 	+labeled_input_text(name="affect_model_name" parent_form="field_form" label = "Model Name")

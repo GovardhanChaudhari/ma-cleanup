@@ -24,6 +24,7 @@ Meteor.methods({
 			var model;
 			if(modelName === ModelDb_Name){
 				model = ModelDefDb;
+				ModelHelpers.addGenericMethods(model,modelName);
 			}else{
 				model = ModelDefDb.findOne({name:modelName});
 				var mongoModel = MongoUtils.getCollection(modelName);
@@ -53,7 +54,11 @@ Meteor.methods({
 						var searchOptions = {};
 						//searchOptions[primaryKey] = obj[primaryKey];
 						console.log("finding record with search options : ", searchOptions);
-						model.insert(obj);
+
+						// remove any blank keys added accidently
+						ObjectUtils.removeKey(obj,"");
+
+						model.create(obj);
 						//TODO
 						var foundRecord = model.findOne(searchOptions);
 						/*if(foundRecord){
@@ -71,6 +76,34 @@ Meteor.methods({
 			});
 
 			return CsvUtils.CSVToJSON(csvData,boundFunction);
+	},
+
+	importJSON:function(modelName,primaryKey,csvData){
+		// this is server code so we cant use ModelHelpers.currentModel()
+		// to get current model since it uses session and session is not
+		//available on server
+		var model;
+		if(modelName === ModelDb_Name){
+			model = ModelDefDb;
+			ModelHelpers.addGenericMethods(model,modelName);
+		}else{
+			model = ModelDefDb.findOne({name:modelName});
+			var mongoModel = MongoUtils.getCollection(modelName);
+			model = ObjectUtils.merge(model,mongoModel);
+			ModelHelpers.addGenericMethods(model,modelName);
+		}
+
+		_.each(result,function(obj){
+			if(modelName === ModelDb_Name){
+				var fieldsString = obj.fields;
+				fieldsString = fieldsString.replace(/'/g,"\"");
+				obj.fields = JSON.parse(fieldsString);
+				ModelHelpers.publishModel(obj.name);
+			}
+			// remove any blank keys added accidently
+			ObjectUtils.removeKey(obj,"");
+			model.create(obj);
+		});
 	},
 
 	httpGet:function(url,options){

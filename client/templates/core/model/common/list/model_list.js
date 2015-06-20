@@ -1,5 +1,4 @@
 Template.modelList.helpers({
-
     models: function () {
         var foundModels;
         //console.log("tracking models **************" + this);
@@ -12,44 +11,15 @@ Template.modelList.helpers({
         }else{
             foundModels = ModelHelpers.currentModel().getModelList(searchData);
         }
-
-
-        Found_Models = foundModels;
-        //Models_Dep.depend();
-        //Session.set("search_data",null);
-        //var totalRecordTemplate = TemplateHelpers.getParentTemplate(Template.instance(),"total_records");
-        //console.log("found total record template " + totalRecordTemplate);
-        try {
-            Session.set(Total_Records, Found_Models.length);
-            var sum = ArrayUtils.sum(Found_Models, "selling_price", "int");
-            Session.set(Total_Sum, sum);
-            //this.totalRecords = Found_Models.length;
-            //Template.instance().data.totalRecords = Found_Models.length;
-        } catch (e) {
-            //this.totalRecords = 0;
-            Session.set(Total_Records, 0);
-        }
-        return Found_Models;
+        return foundModels;
     },
 
     fields: function () {
         return ModelHelpers.getCurrentModelFields({includeHidden: false});
     },
 
-    function_field_name: function () {
-        return "function_" + this.name;
-    },
-
     currentModel: function () {
         return ModelHelpers.currentModel();
-    },
-
-    totalRecords: function () {
-        return Session.get(Total_Records);
-    },
-
-    sum: function () {
-        return Session.get(Total_Sum);
     },
 
     showTableOperation: function () {

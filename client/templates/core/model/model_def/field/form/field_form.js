@@ -1,41 +1,6 @@
 Template.field_form.rendered = function(){
     var template = this;
-
-    this.getValue = function(){
-        var name = ComponentHelpers.getInputValueByName(template,"name");
-        var label = ComponentHelpers.getInputValueByName(template,"label");
-		var type = ComponentHelpers.getDataListValue(template,"type");
-        var operation = ComponentHelpers.getInputValueByName(template,Table_Operation);
-
-		if(!label){
-			label = name;
-		}
-
-        var formData ={name:name,type:type,label:label};
-        if(operation){
-            formData[Table_Operation] = operation;
-        }
-        if(type === Data_Type_Combo || type === Data_Type_DropDown){
-            var comboExtraParamValue = ComponentHelpers.getComboExtraParamValues(template);
-            //debugger;
-            formData = ObjectUtils.merge(formData,comboExtraParamValue);
-        }else if(type === Data_Type_Derived){
-
-        }
-
-		// note that this value is of type string ie "true" or "false"
-		var hasEffectOnOtherModel = ComponentHelpers.getCheckBoxComponentValue(template,"has_effect");
-
-		if(ObjectUtils.stringToBoolean(hasEffectOnOtherModel)){
-			var affectFieldData = Field_Form_Helpers.getAffectFieldData(template);
-			formData = ObjectUtils.merge(formData,affectFieldData);
-			formData["has_effect"] = "true";
-		}else{
-			formData = ObjectUtils.removeKeys(formData,Affect_Field_Names);
-		}
-
-        return formData;
-    };
+	//TODO get subform data depending on condition
 };
 
 Template.field_form.helpers({
@@ -87,7 +52,7 @@ Template.button_update_field_form.events({
 		var modelDef = ModelDefHelpers.getModelDefById(modelDefId);
 		var fieldData = field_form.getValue();
 		//TODO remove key should return cloned object
-        //debugger;
+        debugger;
 		var modelDef = ObjectUtils.removeKey(modelDef,"_id");
 		var fieldIndex = Session.get(Editing_Field);
 

@@ -1,12 +1,16 @@
 template(name="form_file")
     input(type="file",name="fileInput",id="fileInput")
+
 template(name="button_upload_file")
     button(type="submit").btn.btn-success.upload_file Upload
+
 template(name="button_cancel_upload_file")
     button.btn.cancel_upload_file Cancel
+
 template(name="file_upload_component")
     +form_file
     +button_upload_file
+
 template(name="file_upload_form")
     h3 Upload File
     form

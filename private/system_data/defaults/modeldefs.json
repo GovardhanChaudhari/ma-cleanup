@@ -2,11 +2,11 @@
   {
     "name":"model",
     "fields":[
-        {"name":"name","type":"string"},
-        {"name":"fields","type":"field"},
-        {"name":"ownerId","type":"combo","model_name":"user","display_value":"user_name","option_value":"_id"},
-        {"name":"showTableOperation","type":"boolean"},
-        {"name":"isBaseModel","type":"boolean"}
+        {"name":"name","type":"string","label":"Name"},
+        {"name":"fields","type":"field","label":"Fields"},
+        {"name":"ownerId","type":"combo","model_name":"user","display_value":"user_name","option_value":"_id","label":"Owner Id"},
+        {"name":"showTableOperation","type":"boolean","label":"Show Table Operation"},
+        {"name":"isBaseModel","type":"boolean","label":"Is Base Model"}
     ],
     "owner":"a@a.com",
     "showTableOperation":"false",
@@ -16,12 +16,12 @@
   {
     "name":"user",
     "fields":[
-      {"name":"name"},
-      {"name":"_id"},
-      {"name":"email"},
-      {"name":"password","type":"password","hide":true},
-      {"name":"roles","type":"drop_down","model_name":"role","display_value":"name","multiple":"true"},
-      {"name":"meteorUserId","type":"string"}
+      {"name":"name","label":"Name"},
+      {"name":"_id","label":"Id"},
+      {"name":"email","label":"Email"},
+      {"name":"password","type":"password","hide":true,"label":"Password"},
+      {"name":"roles","type":"drop_down","model_name":"role","display_value":"name","multiple":"true","label":"Roles"},
+      {"name":"meteorUserId","type":"string","label":"Meteor User Id"}
     ],
     "isBaseModel":"true",
     "owner":"a@a.com",
@@ -30,10 +30,10 @@
   {
     "name":"users",
     "fields":[
-      {"name":"_id"},
-      {"name":"emails"},
-      {"name":"profile"},
-      {"name":"roles"}
+      {"name":"_id","label":"Id"},
+      {"name":"emails","label":"EMails"},
+      {"name":"profile","label":"Profile"},
+      {"name":"roles","label":"Roles"}
     ],
     "isBaseModel":"true",
     "owner":"a@a.com",
@@ -42,11 +42,11 @@
   {
     "name":"role",
     "fields":[
-      {"name":"name"},
-      {"name":"read","type":"boolean"},
-      {"name":"insert","type":"boolean"},
-      {"name":"update","type":"boolean"},
-      {"name":"delete","type":"boolean"}
+      {"name":"name","label":"Name"},
+      {"name":"read","type":"boolean","label":"Can Read"},
+      {"name":"insert","type":"boolean","label":"Can Insert"},
+      {"name":"update","type":"boolean","label":"Can Update"},
+      {"name":"delete","type":"boolean","label":"Can Delete"}
     ],
     "owner":"a@a.com",
     "showTableOperation":"false",
@@ -55,7 +55,7 @@
 
   {
     "name":"group",
-    "fields":[{"name":"name"}],
+    "fields":[{"name":"name","label":"Name"}],
     "isBaseModel":"true",
     "owner":"a@a.com",
     "showTableOperation":"false"
@@ -76,7 +76,7 @@
     "name":"type",
     "fields":
     [
-      {"name":"name","type":"string"}
+      {"name":"name","type":"string","label":"Name"}
     ],
     "isBaseModel":"true"
   },
