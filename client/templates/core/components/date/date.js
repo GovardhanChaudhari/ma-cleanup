@@ -1,4 +1,4 @@
-Template.labeled_date.created = TemplateHelpers.setParentForm;
+Template.labeled_date.created = FormHelpers.setParentForm;
 
 Template.labeled_date.rendered = function(){
     $('.datepicker').datepicker({

@@ -3,6 +3,6 @@ ArrayUtils.each(Single_Valued_Templates, function (templateName) {
 });
 
 ArrayUtils.each(App_Components,function(templateName){
-    Template[templateName].created = TemplateHelpers.setParentForm;
+    Template[templateName].created = FormHelpers.setParentForm;
     Template[templateName].rendered = TemplateHelpers.getValue;
 });

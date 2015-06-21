@@ -1,1 +1,1 @@
-Template.model_instance_form.created = TemplateHelpers.setAppFormGetValueFunction;
+Template.model_instance_form.created = FormHelpers.setFormGetValueFunction;

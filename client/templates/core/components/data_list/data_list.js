@@ -1,4 +1,4 @@
-Template.data_list.created = TemplateHelpers.setParentForm;
+Template.data_list.created = FormHelpers.setParentForm;
 
 Template.data_list.rendered = function(){
 	var template = this;

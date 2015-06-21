@@ -1,5 +1,5 @@
 Template.field_form.created = function(){
-	TemplateHelpers.setAppFormGetValueFunction.apply(this);
+	FormHelpers.setFormGetValueFunction.apply(this);
 };
 
 Template.field_form.rendered = function(){

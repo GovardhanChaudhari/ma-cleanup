@@ -1,4 +1,4 @@
-Template.model_def_form.created = TemplateHelpers.setAppFormGetValueFunction;
+Template.model_def_form.created = FormHelpers.setFormGetValueFunction;
 
 Template.model_def_form.rendered = function(){
     var template = this;
