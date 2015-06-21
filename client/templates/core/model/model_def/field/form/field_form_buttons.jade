@@ -1,0 +1,16 @@
+template(name="field_form_buttons")
+   if isEditing
+      +button_update_field_form
+   else
+      +button_save_field_form
+   +button_cancel_field_form
+
+
+template(name="add_new_field_link")
+   a.field.add_new_field_link(href="#") Add New Field
+template(name="button_save_field_form")
+   a(href="/models/#{modelId}/fields/new").btn.btn-success.save_field Save
+template(name="button_update_field_form")
+   a(href="/modeldefs/#{modelId}/edit").btn.btn-warning.update_field Update
+template(name="button_cancel_field_form")
+   a(href="/modeldefs/#{modelId}/edit").btn Cancel

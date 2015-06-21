@@ -1,28 +1,19 @@
 template(name="field_form")
+	ul(role="tablist" id="form_field_tabs").nav.nav-tabs
+		li(role="presentation").basic.active
+			a(href="#basic" aria-controls="basic" role="tab" data-toggle="tab") Basic
+		li(role="presentation").advanced
+			a(href="#advanced" aria-controls="advanced" role="tab" data-toggle="tab") Advanced
+
 	form
-		+labeled_input_text(name="name" parent_form="field_form" label = "Field Name")
-
-		br
-		+new_type_field_data_list(label="Type" name="type" model_name="type" display_value="name" parent_form="field_form")
-
-		br
-		+labeled_input_text(name="label" parent_form="field_form" label = "Field Label")
-
-		if isCombo
-			+combo_fields
-		br
-		+labeled_input_text(name="operation" parent_form="field_form" label = "Aggregate Operation")
-
-		+affect_fields
-
-		br
-		br
-		if isEditing
-			+button_update_field_form
-		else
-			+button_save_field_form
-		+button_cancel_field_form
-
+		.tab-content
+			.tab-pane.active(role="tabpanel" id="basic")
+				+field_form_basic
+			.tab-pane(role="tabpanel" id="advanced")
+				+field_form_advanced
+	br
+	br
+	+field_form_buttons
 
 template(name="combo_fields")
 	br
@@ -37,35 +28,3 @@ template(name="combo_fields")
 	if isMultiple
 		br
 		+labeled_checkbox(name="multiple" label="Is Multiple" parent_form="field_form")
-
-
-template(name="affect_fields")
-	br
-	+labeled_checkbox(name="has_effect" label="Has Effect On Other Model" parent_form="field_form")
-
-	br
-	+labeled_input_text(name="affect_model_name" parent_form="field_form" label = "Model Name")
-
-	br
-	+labeled_input_text(name="affect_model_property" parent_form="field_form" label = "Model Property Name")
-
-	br
-	+labeled_input_text(name="source_affect_filter_property" parent_form="field_form" label = "Source Filter Property Name")
-
-	br
-	+labeled_input_text(name="dest_affect_filter_property" parent_form="field_form" label = "Destination Filter Property Name")
-
-	br
-	+labeled_input_text(name="affect_operation" parent_form="field_form" label = "Operation")
-
-template(name="add_new_field_link")
-	a.field.add_new_field_link(href="#") Add New Field
-
-template(name="button_save_field_form")
-	a(href="/models/#{modelId}/fields/new").btn.btn-success.save_field Save
-
-template(name="button_update_field_form")
-	a(href="/modeldefs/#{modelId}/edit").btn.btn-warning.update_field Update
-
-template(name="button_cancel_field_form")
-	a(href="/modeldefs/#{modelId}/edit").btn Cancel

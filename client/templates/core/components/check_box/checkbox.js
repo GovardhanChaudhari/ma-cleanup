@@ -18,5 +18,18 @@ Template.checkbox.helpers({
     value:function(){
         console.log("getting checkbox value");
         return ObjectUtils.stringToBoolean(ComponentHelpers.value.apply(this));
+    },
+    label:function(){
+        return this.label;
+    }
+});
+
+Template.labeled_checkbox.helpers({
+    value:function(){
+        console.log("getting checkbox value");
+        return ObjectUtils.stringToBoolean(ComponentHelpers.value.apply(this));
+    },
+    label:function(){
+        return this.label;
     }
 });

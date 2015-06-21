@@ -1,0 +1,14 @@
+template(name="field_form_basic")
+   +labeled_input_text(name="name" parent_form="field_form" label = "Field Name")
+
+   br
+   +new_type_field_data_list(label="Type" name="type" model_name="type" display_value="name" parent_form="field_form")
+
+   if isCombo
+      +combo_fields
+
+   br
+   +labeled_input_text(name="label" parent_form="field_form" label = "Field Label")
+
+   br
+   +labeled_input_text(name="operation" parent_form="field_form" label = "Aggregate Operation")

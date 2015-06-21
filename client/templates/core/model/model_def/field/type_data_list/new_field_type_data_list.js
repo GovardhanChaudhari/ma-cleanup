@@ -6,7 +6,7 @@ Template.new_type_field_data_list.created = function(){
 		Template.data_list_input.events({
 			'input':function(evt,template){
 				console.log("event:input data list input has changed");
-				var field_form = TemplateHelpers.getParentTemplate(template,"field_form");
+				var field_form = TemplateHelpers.getParentTemplate(template,"field_form_basic");
 				var val = $(evt.target).val();
 				if(val === Data_Type_Combo || val === Data_Type_DropDown){
 					field_form.isCombo.set(true);

@@ -1,0 +1,21 @@
+template(name="field_form_advanced")
+   +affect_fields
+
+template(name="affect_fields")
+   br
+   +labeled_checkbox(name="has_effect" label="Has Effect On Other Model" parent_form="field_form")
+
+   br
+   +labeled_input_text(name="affect_model_name" parent_form="field_form" label = "Model Name")
+
+   br
+   +labeled_input_text(name="affect_model_property" parent_form="field_form" label = "Model Property Name")
+
+   br
+   +labeled_input_text(name="source_affect_filter_property" parent_form="field_form" label = "Source Filter Property Name")
+
+   br
+   +labeled_input_text(name="dest_affect_filter_property" parent_form="field_form" label = "Destination Filter Property Name")
+
+   br
+   +labeled_input_text(name="affect_operation" parent_form="field_form" label = "Operation")
