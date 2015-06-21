@@ -1,0 +1,7 @@
+template(name="tab_header")
+   li(role="presentation")
+      a(href=href aria-controls=id role="tab" data-toggle="tab") #{label}
+
+template(name="tab_content")
+   .tab-pane(role="tabpanel" id=id)
+      {{> Template.dynamic template=template_name}}

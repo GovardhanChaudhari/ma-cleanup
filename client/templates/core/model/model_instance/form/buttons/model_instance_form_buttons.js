@@ -36,7 +36,7 @@ Template.button_form_update.events({
 Template.button_form_save.events({
     'click':function(evt,template){
         //debugger;
-        evt.preventDefault();
+        //evt.preventDefault();
         // here template var is instance of button_save template, but we actually want the model_form
         // template instance which is parent template of this template
 
@@ -61,7 +61,7 @@ Template.button_form_save.events({
             //var modelDef = ModelDefHelpers.getModelDefByName(currentModel);
             var affectedModelField = ModelDefHelpers.getAffectedModelField(currentModel);
 
-            if(affectedModelField){
+            if(ObjectUtils.stringToBoolean(affectedModelField.has_effect)){
                 var model = ModelHelpers.getModel(affectedModelField[Affect_Model_Name]);
                 var modelProperty = affectedModelField[Affect_Model_Property];
                 var filterProperty = affectedModelField[Affect_Filter_Property];

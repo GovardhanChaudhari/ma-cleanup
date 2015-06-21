@@ -4,8 +4,7 @@ Template.labeled_checkbox.rendered = function(){
     var templateInstance = this;
     this.getValue = function(){
         // debugger;
-        var checkbox = ComponentHelpers.getComponent(templateInstance,templateInstance.data.name);
-        value = ComponentHelpers.isCheckBoxChecked(checkbox);
+        value = ComponentHelpers.getCheckBoxComponentValue(templateInstance,templateInstance.data.name);
         return value;
     };
 
@@ -16,17 +15,14 @@ Template.labeled_checkbox.rendered = function(){
 
 Template.checkbox.helpers({
     value:function(){
-        console.log("getting checkbox value");
+        //console.log("getting checkbox value");
         return ObjectUtils.stringToBoolean(ComponentHelpers.value.apply(this));
-    },
-    label:function(){
-        return this.label;
     }
 });
 
 Template.labeled_checkbox.helpers({
     value:function(){
-        console.log("getting checkbox value");
+        //console.log("getting checkbox value");
         return ObjectUtils.stringToBoolean(ComponentHelpers.value.apply(this));
     },
     label:function(){

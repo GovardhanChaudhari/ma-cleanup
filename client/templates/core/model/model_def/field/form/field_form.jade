@@ -1,16 +1,15 @@
 template(name="field_form")
 	ul(role="tablist" id="form_field_tabs").nav.nav-tabs
-		li(role="presentation").basic.active
-			a(href="#basic" aria-controls="basic" role="tab" data-toggle="tab") Basic
-		li(role="presentation").advanced
-			a(href="#advanced" aria-controls="advanced" role="tab" data-toggle="tab") Advanced
+		+tab_header(id="basic" label="Basic" active="true")
+		+tab_header(id="advanced" label="Advanced")
+		+tab_header(id="validation" label="Validations")
 
 	form
 		.tab-content
-			.tab-pane.active(role="tabpanel" id="basic")
-				+field_form_basic
-			.tab-pane(role="tabpanel" id="advanced")
-				+field_form_advanced
+			+tab_content(id="basic" template_name="field_form_basic" active="true")
+			+tab_content(id="advanced" template_name="field_form_advanced")
+			+tab_content(id="validation" template_name="field_form_validations")
+
 	br
 	br
 	+field_form_buttons
