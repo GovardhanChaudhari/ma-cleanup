@@ -1,0 +1,12 @@
+template(name="model_instance_details_phone")
+   .panel.panel-primary
+      .panel-heading
+         .panel-title
+            +model_instance_details_header_phone
+      .panel-body
+         ul.list-group
+            each fields
+               +model_details_row
+
+      +model_details_buttons_phone
+
