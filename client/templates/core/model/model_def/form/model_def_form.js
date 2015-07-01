@@ -1,6 +1,6 @@
-Template.model_def_form.created = FormHelpers.setFormGetValueFunction;
+//Template.model_def_form.created = FormHelpers.setFormGetValueFunction;
 
-Template.model_def_form.rendered = function(){
+/*Template.model_def_form.rendered = function(){
     var template = this;
 
     this.getValue = function(){
@@ -21,14 +21,14 @@ Template.model_def_form.rendered = function(){
         }
         return data;
     };
-};
+};*/
 
 Template.model_def_form.helpers({
 
 	fields:function(){
 		//var fields = ModelHelpers.getEditingModelSubFields(this._id);
-        //debugger;
-        var fields = this.fields;
+        debugger;
+        var fields = TemplateHelpers.getParentFormData(Template.instance()).fields;
 		//console.log("found fields : " + fields.length);
 		// add index to each field
 		return ArrayUtils.map(fields,function(field,index){
@@ -38,7 +38,7 @@ Template.model_def_form.helpers({
 	},
 
 	fieldNames:function(){
-		//return FieldNames;	
+		//return FieldNames;
 		return FieldHelpers.getFieldNameObjectArrayByFieldArray(this.fields);
 	},
 
@@ -66,6 +66,3 @@ Template.button_add_new_field.helpers({
 		return modelInstance._id;
 	}
 });
-
-
-

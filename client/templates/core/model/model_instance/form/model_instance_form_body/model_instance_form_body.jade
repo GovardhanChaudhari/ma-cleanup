@@ -1,5 +1,7 @@
 template(name="model_instance_form_body")
-   form
+   form(id="model_instance_form_body" data-parsley-validate).model_instance_form_body
       +each fields
          .form-group
             +my_dynamic_template
+
+      +model_instance_form_buttons

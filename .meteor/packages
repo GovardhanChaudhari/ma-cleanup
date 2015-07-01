@@ -28,3 +28,7 @@ meteorhacks:npm
 npm-container
 udondan:jszip
 udondan:zipzap
+amr:parsley.js
+coffeescript
+peerlibrary:blaze-components
+manuel:viewmodel

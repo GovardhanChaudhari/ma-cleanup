@@ -43,3 +43,9 @@ Template.button_update_model_def_form.events({
         RouterHelpers.showModelList(currentModel._id);
     }
 });
+
+Template.button_add_new_field.events({
+    'click':function(evt,template){
+        RouterHelpers.showNewModelDefFieldForm(RouterHelpers.getParamValue("_id"));
+    }
+});

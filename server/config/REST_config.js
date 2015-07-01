@@ -1,4 +1,4 @@
-Restivus.configure({
-    useAuth: false,
+/*Restivus.configure({
+    useAuth: true,
     prettyJson: true
-});
+});*/

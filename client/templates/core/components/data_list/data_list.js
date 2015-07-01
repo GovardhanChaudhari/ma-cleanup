@@ -9,11 +9,10 @@ Template.data_list.rendered = function(){
 
 Template.data_list_internal.helpers({
 	items:function(){
-		//return [{"_id":"1",f:"one"},{"_id":"2",f:"two"}];
-		//console.log(this);
-
 		var models;
 		if(this.model_name){
+			//TODO is this right place for subscription
+			Meteor.subscribe(this.model_name);
 			models = MongoUtils.getCollection(this.model_name).find().fetch();
 		}else{
 			console.log("Error: you must provide model_name");

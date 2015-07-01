@@ -46,6 +46,6 @@ Template.button_edit_row.events({
         Session.set(Editing_Model, template.data._id);
         Session.set(Current_Editing_Model_Data, template.data);
         //debugger;
-        Router.go("/models/"+template.data._id +"/edit");
+        Router.go("/models/"+template.data._id +"/" + Form_Mode_Edit);
     }
 });
