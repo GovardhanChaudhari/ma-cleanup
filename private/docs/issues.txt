@@ -1,7 +1,7 @@
 Current Issues
 ===============
 
-- If in betweem model field is removed, blank model field is created.
+- If in between model field is removed, blank model field is created.
 	-cause
 		- array indexing, model field naming is inconsistent
 

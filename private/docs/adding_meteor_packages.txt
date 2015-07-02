@@ -1,6 +1,6 @@
 - To add meteor packages run bash script 'add_packages.sh' provided in the root folder of this app.
 
 	
-	- Note for accounts-ui-bootstrap-3 package, we need to install meteroite using following command:
+	-[deprecated] Note for accounts-ui-bootstrap-3 package, we need to install meteroite using following command:
 
 		[sudo] npm install -g meteorite
