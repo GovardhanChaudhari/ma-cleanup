@@ -11,7 +11,6 @@ Template.side_navbar.helpers({
 		}else{
 			return ModelDefHelpers.getCustomeModelDefs(UserHelpers.getLoggedInUserId());
 		}
-
 	}
 });
 

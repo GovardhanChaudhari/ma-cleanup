@@ -73,28 +73,7 @@ Router.route('/fdr_dashboard', function () {
     this.render('fdr_dashboard', {data: {}});
 }, {name: "fdr_dashboard"});
 
-// mobile routes
-Router.route('/mobile/modeldefs/', function () {
-    this.render('model_def_list_phone', {});
-}, {name: "model_def_list_phone"});
 
-Router.route('/mobile/models/:_id', function () {
-    this.render('model_instance_list_phone', {data: ModelDefDb.findOne({_id: this.params._id})});
-}, {name: "model_instance_list_phone"});
-
-Router.route('/mobile/models/:_id/details/:itemId', function () {
-    this.render('model_instance_details_phone', {data: ModelHelpers.getModelInstanceById(this.params.itemId)});
-}, {name: "model_instance_details_phone"});
-
-Router.route('/mobile/models/:_id/:'+Form_Mode, function () {
-    if(this.params[Form_Mode] === Form_Mode_New){
-        this.render('model_form_phone');
-    }else{
-        this.render('model_form_phone',{data: ModelHelpers.getCurrentEditingModelData()});
-    }
-}, {name: "model_instance_form_mobile"});
-
-/**********************************************************************/
 
 Router.route('/question_bank', function () {
     this.render('question_bank', {});

@@ -53,6 +53,9 @@ if(Meteor.isServer){
                 user.profile.name = meteorUserEmail;
             }
 
+            Meteor.setTimeout(function () {
+                RoleUtils.addUserToRoles(user._id,Role_User);
+            },0);
 
             UserHelpers.createUserByMeteorUser(user);
             return user;

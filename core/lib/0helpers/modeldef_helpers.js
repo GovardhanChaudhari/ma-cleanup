@@ -32,8 +32,7 @@ ModelDefHelpers={
 	// meteor userId is optional
 	getCustomeModelDefs:function(meteorUserId){
 		if(meteorUserId){
-			var userId = UserHelpers.getUserIdByMeteorUserId(meteorUserId);
-			return ModelDefDb.find({name:{$nin:Base_Models},ownerId:userId,isBaseModel:"false"}).fetch();
+			return ModelDefDb.find({name:{$nin:Base_Models},ownerId:meteorUserId,isBaseModel:"false"}).fetch();
 		}else{
 			return ModelDefDb.find({name:{$nin:Base_Models},isBaseModel:"false"}).fetch();
 		}
