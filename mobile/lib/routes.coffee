@@ -5,12 +5,23 @@ Router.route '/mobile/modeldefs/', (->
 
 
 Router.route '/mobile/models/:_id', (->
+  model = ModelDefDb.findOne _id:@params._id
+  if !ArrayUtils.contains(AllReady_Published_Models,model.name)
+    MongoUtils.createModelIfNotExists model.name
+
+  @subscribe(model.name).wait()
+
   @render 'model_instance_list_phone', data: ModelDefDb.findOne(_id: @params._id)
   return
 ), name: 'model_instance_list_phone'
 
 
 Router.route '/mobile/models/:_id/details/:itemId', (->
+  model = ModelDefDb.findOne _id:@params._id
+  if !ArrayUtils.contains(AllReady_Published_Models,model.name)
+    MongoUtils.createModelIfNotExists model.name
+
+  @subscribe(model.name).wait()
   @render 'model_instance_details_phone', data: ModelHelpers.getModelInstanceById(@params.itemId)
   return
 ), name: 'model_instance_details_phone'

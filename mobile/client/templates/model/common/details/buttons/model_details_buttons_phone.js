@@ -6,6 +6,6 @@ Template.button_edit_model_phone.events({
         Session.set(Editing_Model, modelInstance._id);
         Session.set(Current_Editing_Model_Data, modelInstance);
         //debugger;
-        RouterHelpers.mobileShowEditModelInstanceForm(currentModel._id);
+        MobileRouteHelpers.showEditModelInstanceForm(currentModel._id);
     }
 });

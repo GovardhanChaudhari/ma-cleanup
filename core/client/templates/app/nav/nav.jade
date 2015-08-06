@@ -7,7 +7,10 @@ template(name="nav")
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-				a(href="/").navbar-brand Meteor(#{getMeteorVersion}) Admin (Ver. Alpha 0.12)
+				if isPhone
+					a(href="/").navbar-brand Meteor Admin (Ver. Alpha 0.12)
+				else
+					a(href="/").navbar-brand Meteor(#{getMeteorVersion}) Admin (Ver. Alpha 0.12)
 			#navbar-collapse-1.collapse.navbar-collapse
 				ul.nav.navbar-nav.navbar-right
 					+loginButtons

@@ -4,8 +4,9 @@ UserConfig = {
 
 if(Meteor.isServer){
     Accounts.onLogin(function(){
-        console.log("Login successfull***********");
-        if(!ModelDef.isPublished){
+        console.log("Accounts.onLogin: Login successfull***********");
+
+        //if(!ModelDef.isPublished){
             var models = ModelDefDb.find().fetch();
             ArrayUtils.each(models,function(model){
                 if(model.name !== ModelDb_Name){
@@ -13,7 +14,7 @@ if(Meteor.isServer){
                 }
             });
             ModelDef.isPublished = true;
-        }
+        //}
 
     });
 }
@@ -61,4 +62,11 @@ if(Meteor.isServer){
             return user;
         }
 	});
+}
+
+if(Meteor.isClient){
+    Accounts.onLogin(function(){
+        console.log("client: called onLogin");
+        RouterHelpers.goToHomePage();
+    });
 }

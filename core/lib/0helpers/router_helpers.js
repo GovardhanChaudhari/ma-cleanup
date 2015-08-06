@@ -1,4 +1,9 @@
 RouterHelpers={
+
+	goToHomePage:function(){
+		Router.go("/");
+	},
+
 	goEditModelDefs:function(modelId){
 		Router.go("/modeldefs/" + modelId + "/" + Form_Mode_Edit);
 	},
@@ -33,24 +38,6 @@ RouterHelpers={
 
 	showNewModelDefFieldForm:function(modelDefId){
 		Router.go("/modeldefs/"+modelDefId+"/fields/" + Form_Mode_New);
-	},
-
-	/*mobile helpers*/
-
-	mobileShowModelInstanceList:function(modelId){
-		Router.go("/mobile/models/" + modelId + "/");
-	},
-
-	mobileShowModelDetails:function(modelId,itemId){
-		Router.go("/mobile/models/" + modelId + "/details/" + itemId);
-	},
-
-	mobileShowNewModelInstanceForm: function (modelDefId) {
-		Router.go("/mobile/models/" + modelDefId + "/" + Form_Mode_New);
-	},
-
-	mobileShowEditModelInstanceForm: function (modelDefId) {
-		Router.go("/mobile/models/" + modelDefId + "/" + Form_Mode_Edit);
 	},
 
 	getParamValue:function(paramName){

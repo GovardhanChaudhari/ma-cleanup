@@ -1,6 +1,7 @@
 var formSaveAction = function(template){
 
-    modelFormTemplate = TemplateHelpers.getParentTemplate(template,"model_instance_form");
+    //modelFormTemplate = TemplateHelpers.getParentTemplate(template,"model_instance_form");
+    modelFormTemplate = TemplateHelpers.getParentFormTemplate(template);
     var data = modelFormTemplate.getValue();
 
     var currentModel = ModelHelpers.currentModel();
@@ -55,7 +56,8 @@ var formSaveAction = function(template){
 };
 
 var formUpdateAction = function(template){
-    modelFormTemplate = TemplateHelpers.getParentTemplate(template,"model_instance_form");
+    //modelFormTemplate = TemplateHelpers.getParentTemplate(template,"model_instance_form");
+    modelFormTemplate = TemplateHelpers.getParentFormTemplate(template);
     //debugger;
     var data = modelFormTemplate.getValue();
 
@@ -83,6 +85,7 @@ Template.model_instance_form_body.rendered = function(){
 
 Template.model_instance_form_body.events({
    "submit form": function (evt, template) {
+       console.log("form submit event called");
        var formMode = FormHelpers.getFormMode();
        if(formMode === Form_Mode_New){
             formSaveAction(template);
@@ -92,7 +95,12 @@ Template.model_instance_form_body.events({
 
        var currentModel = ModelHelpers.currentModel();
        FormHelpers.clearAllFormStates(Session);
-       RouterHelpers.showModelList(currentModel._id);
+       if(Meteor.Device.isPhone()){
+           MobileRouteHelpers.showModelInstanceList(currentModel._id);
+       }else{
+           RouterHelpers.showModelList(currentModel._id);
+       }
+
 
        //prevent default action
        return false;

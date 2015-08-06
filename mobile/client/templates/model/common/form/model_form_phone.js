@@ -1,1 +1,1 @@
-Template.model_form_phone.created = TemplateHelpers.setAppFormGetValueFunction;
+Template.model_form_phone.created = FormHelpers.setFormGetValueFunction;

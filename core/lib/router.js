@@ -4,6 +4,17 @@ var routerConfig = {
     loadingTemplate: 'appLoading'
 };
 
+var mustBeSignedIn = function(pause) {
+    if (!(Meteor.user() || Meteor.loggingIn())) {
+        RouterHelpers.goToHomePage();
+        this.next();
+    }else{
+        this.next();
+    }
+};
+
+Router.onBeforeAction(mustBeSignedIn);
+
 if(Meteor.isClient){
     if(Meteor.Device.isPhone()){
         routerConfig.layoutTemplate =  "layout_phone"
@@ -13,6 +24,7 @@ if(Meteor.isClient){
 Router.configure(routerConfig);
 
 Router.route('/', function () {
+    this.subscribe(RoleDef.name).wait();
     this.render('home_page');
 });
 
