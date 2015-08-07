@@ -55,5 +55,9 @@ ModelDefHelpers={
 
 	hasModelDefs:function(){
 		return ModelDefDb.find().count() !== 0;
+	},
+
+	getCurrentModelDefId:function(){
+		return ModelHelpers.currentModel()._id;
 	}
 };

@@ -9,7 +9,11 @@ Template.button_form_cancel.events({
     'click':function(evt,template){
         var currentModel = ModelHelpers.currentModel();
         FormHelpers.clearAllFormStates(Session);
-        RouterHelpers.showModelList(currentModel._id);
+        if(MobileUtils.isPhoneOrTablet()){
+            MobileRouteHelpers.showModelInstanceList(currentModel._id);
+        }else{
+            RouterHelpers.showModelList(currentModel._id);
+        }
         return false;
     }
 });

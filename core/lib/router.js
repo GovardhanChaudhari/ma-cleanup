@@ -16,7 +16,7 @@ var mustBeSignedIn = function(pause) {
 Router.onBeforeAction(mustBeSignedIn);
 
 if(Meteor.isClient){
-    if(Meteor.Device.isPhone()){
+    if(Meteor.Device.isPhone() || Meteor.Device.isTablet()){
         routerConfig.layoutTemplate =  "layout_phone"
     }
 }

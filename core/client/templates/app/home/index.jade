@@ -1,7 +1,7 @@
 template(name="home_page")
 
 	if currentUser
-		if isPhone
+		if isPhoneOrTablet
 			+model_def_list_phone
 	else
 		h1 Welcome To Meteor Admin

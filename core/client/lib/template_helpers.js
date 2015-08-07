@@ -1,3 +1,6 @@
+Template.registerHelper("isPhoneOrTablet",function(){
+	return MobileUtils.isPhoneOrTablet();
+});
 
 Template.registerHelper("modelName",function(){
 	var currentModel = ModelHelpers.currentModel();

@@ -86,22 +86,26 @@ Template.model_instance_form_body.rendered = function(){
 Template.model_instance_form_body.events({
    "submit form": function (evt, template) {
        console.log("form submit event called");
-       var formMode = FormHelpers.getFormMode();
-       if(formMode === Form_Mode_New){
-            formSaveAction(template);
-       }else{
+
+       if(FormHelpers.isEditingForm()){
            formUpdateAction(template);
+       }else{
+           formSaveAction(template);
        }
 
-       var currentModel = ModelHelpers.currentModel();
+       var currentModelId = ModelDefHelpers.getCurrentModelDefId();
        FormHelpers.clearAllFormStates(Session);
-       if(Meteor.Device.isPhone()){
-           MobileRouteHelpers.showModelInstanceList(currentModel._id);
+       if(MobileUtils.isPhoneOrTablet()){
+           if(FormHelpers.isEditingForm()){
+               var editingModelInstance = ModelHelpers.getCurrentEditingModelData();
+               MobileRouteHelpers.showModelDetails(currentModelId,editingModelInstance._id);
+           }else{
+               MobileRouteHelpers.showModelInstanceList(currentModelId);
+           }
+
        }else{
            RouterHelpers.showModelList(currentModel._id);
        }
-
-
        //prevent default action
        return false;
    }

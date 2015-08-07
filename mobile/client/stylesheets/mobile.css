@@ -1,3 +1,50 @@
+/* Portrait phone*/
+@media screen
+and (max-device-width: 360px)
+and (max-device-height: 640px)
+and (orientation: portrait) {
+
+    .btn-mobile{
+        width:200px;
+        margin-bottom: 3px;
+    }
+
+    .allign-center{
+        text-align: center;
+    }
+}
+/*landscape phone*/
+@media screen
+and (max-device-width: 640px)
+and (max-device-height: 360px)
+and (orientation: landscape) {
+
+    .btn-mobile{
+        width:200px;
+        margin-bottom: 3px;
+    }
+
+    .allign-center{
+        text-align: center;
+    }
+}
+
+/* Portrait tablet*/
+@media screen
+and (max-device-width: 800px)
+and (max-device-height: 1200px)
+and (orientation: portrait) {
+
+    .btn-mobile{
+        width:200px;
+        margin-bottom: 3px;
+    }
+
+    .allign-center{
+        text-align: center;
+    }
+}
+
 .top_bar{
     background-color: #2cc5d2;
     height: 15%;
@@ -5,16 +52,5 @@
 
 .list_details_header{
     font-size: large;
-}
-
-.allign-center{
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
-.btn-mobile{
-    width:200px;
-    margin-bottom: 3px;
 }
 

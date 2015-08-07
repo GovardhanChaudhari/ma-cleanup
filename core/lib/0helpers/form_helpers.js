@@ -62,6 +62,9 @@ FormHelpers = {
 
 	getFormMode:function(){
 		return RouterHelpers.getParamValue(Form_Mode);
-	}
+	},
 
+	isEditingForm:function(){
+		return FormHelpers.getFormMode() === Form_Mode_Edit;
+	}
 };

@@ -1,5 +1,5 @@
 ModelHelpers = {
-
+	//TODO move this to ModelDefHelpers
 	currentModel:function(){
 		if(ModelDefHelpers.hasModelDefs()){
 			var currentModel =  ModelDefDb.findOne(Session.get(Current_Model_Id));

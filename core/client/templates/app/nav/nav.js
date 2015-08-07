@@ -3,12 +3,6 @@ Template.nav.helpers({
 		var models = ModelDefHelpers.getAllModelDefs();
 		return models;
 	}
-
-	/*ready:function(){
-		return _.all(Template.instance().subscriptions,function(sub){
-			return sub.ready();
-		})
-	}*/
 });
 
 Template.nav.created = function(){
