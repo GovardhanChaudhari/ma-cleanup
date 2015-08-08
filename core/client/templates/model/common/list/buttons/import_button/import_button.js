@@ -29,7 +29,7 @@ Template.button_import_csv.events({
                             debugger;
                             console.log("failed to convert base64 to string, err : " + err);
                         }else{
-                            var obj =  Meteor.call('importCsv',ModelHelpers.currentModel().name,primaryKey,result);
+                            var obj =  Meteor.call('importCsv',ModelDefHelpers.currentModel().name,primaryKey,result);
                             debugger;
                             console.log("import csv result: " , obj);
                         }
@@ -73,7 +73,7 @@ Template.button_import_json.events({
                             debugger;
                             console.log("failed to convert base64 to string, err : " + err);
                         }else{
-                            var obj =  Meteor.call('importJSON',ModelHelpers.currentModel().name,primaryKey,result);
+                            var obj =  Meteor.call('importJSON',ModelDefHelpers.currentModel().name,primaryKey,result);
                             debugger;
                             console.log("import csv result: " , obj);
                         }

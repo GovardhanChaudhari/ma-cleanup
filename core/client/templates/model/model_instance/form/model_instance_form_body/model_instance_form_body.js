@@ -4,7 +4,7 @@ var formSaveAction = function(template){
     modelFormTemplate = TemplateHelpers.getParentFormTemplate(template);
     var data = modelFormTemplate.getValue();
 
-    var currentModel = ModelHelpers.currentModel();
+    var currentModel = ModelDefHelpers.currentModel();
     if(currentModel.name === ModelDb_Name){
         // Here we are saving the new model definition instance
 
@@ -61,7 +61,7 @@ var formUpdateAction = function(template){
     //debugger;
     var data = modelFormTemplate.getValue();
 
-    var currentModel = ModelHelpers.currentModel();
+    var currentModel = ModelDefHelpers.currentModel();
     if(currentModel.name === UserDef.name){
         UserDb.updateUser(Session.get(Editing_Model),data);
     }else{
@@ -72,7 +72,7 @@ var formUpdateAction = function(template){
 Template.model_instance_form_body.helpers({
     fields: function(){
         debugger;
-        var fields = ModelHelpers.getCurrentModelFields();
+        var fields = ModelDefHelpers.getCurrentModelFields();
         //fields = ArrayUtils.removeElementByPropertyNameAndValue(fields,"_id");
         return fields;
     }

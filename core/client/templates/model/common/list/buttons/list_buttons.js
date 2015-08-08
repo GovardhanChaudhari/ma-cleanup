@@ -2,9 +2,7 @@ Template.button_add_model.events({
     'click':function(evt,template){
         Session.set(Editing_Model,false);
         Session.set(Add_Model,true);
-        /*var modelFormTemplate = TemplateHelpers.getParentTemplate(template,"modelList");
-         TemplateHelpers.showTemplate("model_form",modelFormTemplate);*/
-        var currentModel = ModelHelpers.currentModel();
+        var currentModel = ModelDefHelpers.currentModel();
         if(Meteor.Device.isPhone()){
             console.log("this is phone");
         }else{
@@ -16,14 +14,14 @@ Template.button_add_model.events({
 
 Template.button_remove_all.events({
     'click':function(evt,template){
-        Meteor.call("removeAll",ModelHelpers.currentModel().name);
+        Meteor.call("removeAll",ModelDefHelpers.currentModel().name);
     }
 });
 
 Template.button_remove_row.events({
     'click' : function(evt,template){
         //TODO if current model is 'models' then also unsubscribe this document collection
-        var currentModel = ModelHelpers.currentModel();
+        var currentModel = ModelDefHelpers.currentModel();
         if(currentModel.name === ModelDb_Name){
             // TODO not working
             Meteor.call("removeDb",template.data.name);
@@ -42,10 +40,10 @@ Template.button_remove_row.events({
 
 Template.button_edit_row.events({
     'click':function(evt,template){
-        evt.preventDefault();
         Session.set(Editing_Model, template.data._id);
         Session.set(Current_Editing_Model_Data, template.data);
         //debugger;
-        Router.go("/models/"+template.data._id +"/" + Form_Mode_Edit);
+        RouterHelpers.showEditModelInstanceForm(template.data._id);
+        return false;
     }
 });

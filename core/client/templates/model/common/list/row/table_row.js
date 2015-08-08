@@ -30,6 +30,6 @@ Template.table_cell_value.helpers({
 
 Template.table_row.helpers({
   fields:function(){
-    return ModelHelpers.getCurrentModelFields();
+    return ModelDefHelpers.getCurrentModelFields();
   }
 });

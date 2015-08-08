@@ -3,7 +3,7 @@ Template.button_add_model_phone.events
     Session.set Editing_Model, false
     Session.set Add_Model, true
     EventUtils.stopDefault evt
-    currentModel = ModelHelpers.currentModel()
+    currentModel = ModelDefHelpers.currentModel()
     console.log 'this is phone'
     MobileRouteHelpers.showNewModelInstanceForm currentModel._id
     return

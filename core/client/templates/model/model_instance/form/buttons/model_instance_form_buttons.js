@@ -7,7 +7,7 @@ Template.model_instance_form_buttons.helpers({
 
 Template.button_form_cancel.events({
     'click':function(evt,template){
-        var currentModel = ModelHelpers.currentModel();
+        var currentModel = ModelDefHelpers.currentModel();
         FormHelpers.clearAllFormStates(Session);
         if(MobileUtils.isPhoneOrTablet()){
             MobileRouteHelpers.showModelInstanceList(currentModel._id);

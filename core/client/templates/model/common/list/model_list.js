@@ -9,22 +9,22 @@ Template.modelList.helpers({
             var featuredModel = ModelHelpers.getFeaturedModel(this.model_name);
             foundModels = featuredModel.getModelList(searchData);
         }else{
-            foundModels = ModelHelpers.currentModel().getModelList(searchData);
+            foundModels = ModelDefHelpers.currentModel().getModelList(searchData);
         }
         return foundModels;
     },
 
     fields: function () {
-        return ModelHelpers.getCurrentModelFields({includeHidden: false});
+        return ModelDefHelpers.getCurrentModelFields({includeHidden: false});
     },
 
     currentModel: function () {
-        return ModelHelpers.currentModel();
+        return ModelDefHelpers.currentModel();
     },
 
     showTableOperation: function () {
         //debugger;
-        var modelDef = ModelDefHelpers.getModelDefByName(ModelHelpers.currentModel().name);
+        var modelDef = ModelDefHelpers.getModelDefByName(ModelDefHelpers.currentModel().name);
         return ObjectUtils.stringToBoolean(modelDef.showTableOperation);
     }
 
@@ -49,7 +49,7 @@ Template.table_operation_value.helpers({
             //debugger;
             var searchData = Session.get(Search_Data);
             searchData = searchData || {};
-            var foundModels = ModelHelpers.currentModel().getModelList(searchData);
+            var foundModels = ModelDefHelpers.currentModel().getModelList(searchData);
 
             return ArrayUtils.sum(foundModels, this.name, this.type);
         }else{

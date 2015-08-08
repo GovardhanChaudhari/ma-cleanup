@@ -9,7 +9,7 @@ Template.button_cancel_field_form.events({
 	'click':function(evt,template){
 		evt.preventDefault();
 		Session.set(Editing_Field,null);
-		RouterHelpers.goEditModelDefs(ModelDefHelpers.getEditingModelDef()._id);
+		RouterHelpers.showEditModelDefForm(ModelDefHelpers.getEditingModelDef()._id);
 	}
 });
 
@@ -25,7 +25,7 @@ Template.button_save_field_form.events({
 		modelDef.fields.push(fieldData);
 		DBUtils.update(ModelDefDb,this.modelId,modelDef);
 		Session.set(Editing_Field,null);
-		RouterHelpers.goEditModelDefs(this.modelId);
+		RouterHelpers.showEditModelDefForm(this.modelId);
 	}
 });
 
@@ -56,6 +56,6 @@ Template.button_update_field_form.events({
 		}
 
 		Session.set(Editing_Field,null);
-		RouterHelpers.goEditModelDefs(modelDefId);
+		RouterHelpers.showEditModelDefForm(modelDefId);
 	}
 });

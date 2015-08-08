@@ -4,16 +4,24 @@ RouterHelpers={
 		Router.go("/");
 	},
 
-	goEditModelDefs:function(modelId){
-		Router.go("/modeldefs/" + modelId + "/" + Form_Mode_Edit);
-	},
-
 	showModelList:function(modelId){
 		Router.go("/models/" + modelId);	
 	},
 
+	showModelInstanceForm:function(modelId,mode){
+		Router.go("/models/" + modelId + "/" + mode);
+	},
+
 	showNewModelInstanceForm:function(modelId){
-		Router.go("/models/" + modelId + "/" + Form_Mode_New);
+		RouterHelpers.showModelInstanceForm(modelId,Form_Mode_New);
+	},
+
+	showEditModelInstanceForm:function(modelId){
+		RouterHelpers.showModelInstanceForm(modelId,Form_Mode_Edit);
+	},
+
+	showModelDefForm:function(modelId,mode){
+		Router.go("/modeldefs/" + modelId + "/" + mode);
 	},
 
 	showNewModelDefForm:function(modelId){
@@ -24,10 +32,6 @@ RouterHelpers={
 		RouterHelpers.showModelDefForm(modelId,Form_Mode_Edit)
 	},
 
-	showModelDefForm:function(modelId,mode){
-		Router.go("/modeldefs/" + modelId + "/" + mode);	
-	},
-
 	showEditModelDefFieldForm:function(modelDefId,fieldIndex){
 		Router.go("/modeldefs/"+modelDefId+"/fields/"+fieldIndex+"/" + Form_Mode_Edit);
 	},
@@ -36,8 +40,12 @@ RouterHelpers={
 		Router.go("/modeldefs/"+modelDefId+"/fields/"+fieldIndex+"/advanced/" + Form_Mode_Edit);
 	},
 
+	showModelDefFieldForm:function(modelDefId,mode){
+		Router.go("/modeldefs/"+modelDefId+"/fields/" + mode);
+	},
+
 	showNewModelDefFieldForm:function(modelDefId){
-		Router.go("/modeldefs/"+modelDefId+"/fields/" + Form_Mode_New);
+		RouterHelpers.showModelDefFieldForm(modelDefId,Form_Mode_New);
 	},
 
 	getParamValue:function(paramName){

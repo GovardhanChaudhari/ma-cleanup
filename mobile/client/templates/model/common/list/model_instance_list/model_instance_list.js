@@ -5,6 +5,6 @@ Template.model_instance_list_phone.helpers({
     }*/
 
     items:function(){
-        return ModelHelpers.currentModel().getModelList();
+        return ModelDefHelpers.currentModel().getModelList();
     }
 });

@@ -3,7 +3,7 @@ Template.registerHelper("isPhoneOrTablet",function(){
 });
 
 Template.registerHelper("modelName",function(){
-	var currentModel = ModelHelpers.currentModel();
+	var currentModel = ModelDefHelpers.currentModel();
 	var modelName = ModelDb_Name;
 	if(currentModel){
 		modelName = currentModel.name;
@@ -22,7 +22,7 @@ Template.registerHelper("currentYear",function(){
 
 Template.registerHelper("isModelDef",function(){
 	//debugger;
-	return ModelDefHelpers.isModelDefinition(ModelHelpers.currentModel().name);
+	return ModelDefHelpers.isModelDefinition(ModelDefHelpers.currentModel().name);
 });
 
 

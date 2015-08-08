@@ -48,7 +48,7 @@ Router.route('/models/:_id/:'+Form_Mode, function () {
 }, {name: "model_instance_form"});
 
 Router.route('/modeldefs/:_id/edit', function () {
-    this.render('model_def_form_tabs', {data: ModelHelpers.currentModel().findOne({_id: this.params._id})});
+    this.render('model_def_form_tabs', {data: ModelDefHelpers.currentModel().findOne({_id: this.params._id})});
 }, {name: "model_def_form_tabs"});
 
 Router.route('/modeldefs/:_id/new', function () {

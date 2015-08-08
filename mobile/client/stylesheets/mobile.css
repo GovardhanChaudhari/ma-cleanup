@@ -1,40 +1,15 @@
 /* Portrait phone*/
-@media screen
-and (max-device-width: 360px)
-and (max-device-height: 640px)
-and (orientation: portrait) {
+@media screen and (max-device-width: 360px) and (max-device-height: 640px) and (orientation: portrait),
 
-    .btn-mobile{
-        width:200px;
-        margin-bottom: 3px;
-    }
-
-    .allign-center{
-        text-align: center;
-    }
-}
-/*landscape phone*/
-@media screen
-and (max-device-width: 640px)
-and (max-device-height: 360px)
-and (orientation: landscape) {
-
-    .btn-mobile{
-        width:200px;
-        margin-bottom: 3px;
-    }
-
-    .allign-center{
-        text-align: center;
-    }
-}
+/* Landscape phone*/
+screen and (max-device-width: 640px) and (max-device-height: 360px) and (orientation: landscape),
 
 /* Portrait tablet*/
-@media screen
-and (max-device-width: 800px)
-and (max-device-height: 1200px)
-and (orientation: portrait) {
+screen and (max-device-width: 800px) and (max-device-height: 1200px) and (orientation: portrait),
 
+/* Landscape tablet*/
+screen and (max-device-width: 1200px) and (max-device-height: 800px) and (orientation: landscape)
+{
     .btn-mobile{
         width:200px;
         margin-bottom: 3px;

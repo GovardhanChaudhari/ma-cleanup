@@ -18,7 +18,7 @@ FormHelpers = {
 	},
 
 	searchAction:function(evt,template){
-		var fields = ModelHelpers.getCurrentModelFields();
+		var fields = ModelDefHelpers.getCurrentModelFields();
 
 		var data = ArrayUtils.reduce(fields,function(inputData,field){
 			var searchFieldValue = ComponentHelpers.getComponentValueBySelector(template,"input[id^=search_" + field.name+  "]");

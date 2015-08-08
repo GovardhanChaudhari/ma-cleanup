@@ -7,7 +7,7 @@ FieldHelpers = {
 	/* */
 	getFieldNameObjectArray:function(modelId){
         //debugger;
-		var fields = ModelHelpers.getEditingModelSubFields(modelId);
+		var fields = ModelDefHelpers.getEditingModelSubFields(modelId);
 		// here fields is array of field objects [{name:"name",type:"string"}]
         return FieldHelpers.getFieldNameObjectArrayByFieldArray(fields);
 	},

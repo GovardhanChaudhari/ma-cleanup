@@ -1,21 +1,4 @@
 ModelHelpers = {
-	//TODO move this to ModelDefHelpers
-	currentModel:function(){
-		if(ModelDefHelpers.hasModelDefs()){
-			var currentModel =  ModelDefDb.findOne(Session.get(Current_Model_Id));
-			if(currentModel){
-			}else{
-				currentModel = ModelDefDb.findOne({name:ModelDb_Name});
-			}
-			var mongoModel = MongoUtils.getModel(currentModel.name);
-			currentModel = ObjectUtils.merge(mongoModel,currentModel);
-			ModelHelpers.addGenericMethods(currentModel,currentModel.name);
-			return currentModel;
-		}else{
-			return null;
-		}
-	},
-
 	getFeaturedModel:function(name){
 		var model = ModelDefHelpers.getModelDefByName(name);
 		var mongoModel = ModelHelpers.subscribeModel(name);
@@ -66,24 +49,6 @@ ModelHelpers = {
 
 			}
 		}
-	},
-
-	getCurrentModelFields:function(options){
-		options = options || {};
-		var fields = ModelDefHelpers.getModelDefFields(ModelHelpers.getCurrentModelName());
-		if(options.includeHidden === false){
-			fields = ArrayUtils.removeElementByPropertyNameAndValue(fields,"hide",true);
-		}
-		return fields;
-	},
-
-	getEditingModelSubFields:function(modelId){
-		if(modelId){
-			return ModelHelpers.currentModel().findOne(modelId).fields;
-		}else{
-			return ModelHelpers.currentModel().findOne(Session.get(Editing_Model)).fields;
-		}
-		
 	},
 
 	publishModel:function(name){
@@ -140,10 +105,6 @@ ModelHelpers = {
 		Meteor.subscribe(modelName,modelName,false);
 	},
 
-	getEditingModel:function(){
-		return ModelDefDb.findOne(Session.get(Editing_Model));
-	},
-
 	isModelExist:function(modelDb,property,val){
 		var searchData = {};
 		searchData[property] = val; 
@@ -170,7 +131,6 @@ ModelHelpers = {
 		return model;
 	},
 
-
 	getCurrentEditingModelData:function(){
 		return Session.get(Current_Editing_Model_Data);
 	},
@@ -187,7 +147,7 @@ ModelHelpers = {
 	},
 
 	getModelInstanceById:function(id){
-		var models = ModelHelpers.getModel(ModelHelpers.currentModel().name);
+		var models = ModelHelpers.getModel(ModelDefHelpers.currentModel().name);
 		var modelInstance = models.findOne({_id:id});
 		return modelInstance;
 	},
@@ -196,11 +156,5 @@ ModelHelpers = {
 		var models = ModelHelpers.getModel(name);
 		var modelInstances = models.getModelList(options);
 		return modelInstances;
-	},
-
-	getCurrentModelName:function(){
-		return ModelHelpers.currentModel().name;
 	}
-
-
 };
