@@ -104,7 +104,7 @@ Template.model_instance_form_body.events({
            }
 
        }else{
-           RouterHelpers.showModelList(currentModel._id);
+           RouterHelpers.showModelList(currentModelId);
        }
        //prevent default action
        return false;

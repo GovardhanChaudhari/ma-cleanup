@@ -1,0 +1,11 @@
+template(name="autoformfield_form_basic")
+   +labeled_input_text(name="name" parent_form="autoformfield_form" label = "Field Name")
+
+   br
+   +labeled_input_text(name="label" parent_form="autoformfield_form" label = "Field Label")
+
+   br
+   +new_type_field_data_list(label="Type" name="type" model_name="type" display_value="name" parent_form="autoformfield_form")
+
+   br
+   +labeled_input_text(name="max" parent_form="model_def_form_tabs" label = "Max")

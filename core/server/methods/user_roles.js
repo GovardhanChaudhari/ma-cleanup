@@ -26,7 +26,7 @@ Meteor.methods({
 
     resetAdminUser:function(){
         var adminUserId = UserHelpers.getAdminUserId();
-        var adminUserDefaultData = System_Defaults_Helpers.getAdminUserDefaults();
+        var adminUserDefaultData = SystemDefaultsHelpers.getAdminUserDefaults();
         if(adminUserId){
             RoleUtils.resetAdminUserRole();
             var userId = UserHelpers.getUserIdByMeteorUserId(adminUserId);

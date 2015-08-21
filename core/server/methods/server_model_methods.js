@@ -7,7 +7,7 @@ Meteor.methods({
         ModelHelpers.publishModel(modelName);
     },
     resetModelDefs: function () {
-        var modelDefs = System_Defaults_Helpers.getDefaultModelDefs();
+        var modelDefs = SystemDefaultsHelpers.getDefaultModelDefs();
         DBUtils.removeAll(ModelDefDb);
         DBUtils.insertAll(ModelDefDb,modelDefs);
     }

@@ -40,6 +40,7 @@ Template.button_remove_row.events({
 
 Template.button_edit_row.events({
     'click':function(evt,template){
+        debugger
         Session.set(Editing_Model, template.data._id);
         Session.set(Current_Editing_Model_Data, template.data);
         //debugger;

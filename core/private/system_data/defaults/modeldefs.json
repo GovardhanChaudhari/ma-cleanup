@@ -88,5 +88,16 @@
       {"name":"name","type":"string"}
     ],
     "isBaseModel":"true"
+  },
+
+  {
+    "name":"logdb",
+    "fields":
+    [
+      {"name":"source","type":"string","label":"Source"},
+      {"name":"mode","type":"string","label":"Mode"},
+      {"name":"description","type":"string","label":"Description"}
+    ],
+    "isBaseModel":"true"
   }
 ]

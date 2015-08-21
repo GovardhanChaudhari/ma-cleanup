@@ -1,0 +1,11 @@
+template(name="autoformfield_form")
+	ul(role="tablist" id="autofieldform_field_tabs").nav.nav-tabs
+		+tab_header(id="basic" label="Basic" active="true")
+
+	form
+		.tab-content
+			+tab_content(id="basic" template_name="autofieldfield_form_basic" active="true")
+
+	br
+	br
+	+field_form_buttons

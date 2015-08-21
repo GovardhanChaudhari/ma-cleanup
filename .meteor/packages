@@ -33,3 +33,5 @@ coffeescript
 peerlibrary:blaze-components
 manuel:viewmodel
 meteorhacks:kadira
+aldeed:autoform
+grigio:babel

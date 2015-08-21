@@ -1,0 +1,14 @@
+{
+  "name":{
+    "type":"String",
+    "label":"Name"
+  },
+  "Label":{
+    "type":"String",
+    "label":"Label"
+  },
+  "type":{
+    "type":"String",
+    "label":"Type"
+  }
+}

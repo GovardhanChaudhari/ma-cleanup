@@ -6,8 +6,9 @@ Template.model_def_form_tabs.rendered = ->
   @getValue = ->
     data = {}
     ArrayUtils.each template.childComponents, (childComponent) ->
+      console.log("getting component value for : ",childComponent.getName(),"value : ",childComponent.getValue())
       data[childComponent.getName()] = childComponent.getValue()
-      return
+
     editingModelDef = ModelDefHelpers.getEditingModelDef()
     if editingModelDef
       # get form data while editing
@@ -16,8 +17,4 @@ Template.model_def_form_tabs.rendered = ->
     else
       # adding new model def
       data.fields = []
-    data
-
-  return
-
-
+    return data

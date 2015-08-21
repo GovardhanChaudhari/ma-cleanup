@@ -8,11 +8,11 @@ Template.button_add_model_def.events({
 
 Template.button_edit_model_def_row.events({
     'click':function(evt,template){
-        EventUtils.stopDefault(evt);
-        //debugger;
+        debugger;
         console.log("editing model def id :" + template.data._id);
         Session.set(Editing_ModelDefId,template.data._id);
         Session.set(Editing_Model,true);
         RouterHelpers.showEditModelDefForm(template.data._id);
+        return false;
     }
 });

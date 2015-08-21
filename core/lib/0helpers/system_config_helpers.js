@@ -17,7 +17,9 @@ SystemConfigHelpers={
 
     getBackupConfig: function () {
         return SystemConfigHelpers.getConfigByFileName(System_Config_File_Name).data_backup;
+    },
+
+    getModelDefAutoFormFields:function(){
+        return SystemConfigHelpers.getConfigByFileName(System_Data_UI_ModelDef_AutoForm_Fields_File);
     }
-
-
 };

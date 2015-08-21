@@ -1,10 +1,30 @@
 ModelHelpers = {
+
+	getModel:function(name){
+		var model = MongoUtils.getModel(name);
+		ModelHelpers.addGenericMethods(model,name);
+		model.name = name;
+		return model;
+	},
+
 	getFeaturedModel:function(name){
 		var model = ModelDefHelpers.getModelDefByName(name);
 		var mongoModel = ModelHelpers.subscribeModel(name);
 		model = ObjectUtils.merge(mongoModel,model);
 		ModelHelpers.addGenericMethods(model,name);
 		return model;
+	},
+
+	getModelInstanceById:function(id){
+		var models = ModelHelpers.getModel(ModelDefHelpers.currentModel().name);
+		var modelInstance = models.findOne({_id:id});
+		return modelInstance;
+	},
+
+	getModelInstancesByName:function(name,options){
+		var models = ModelHelpers.getModel(name);
+		var modelInstances = models.getModelList(options);
+		return modelInstances;
 	},
 
 	addGenericMethods:function(model,modelName){
@@ -52,40 +72,45 @@ ModelHelpers = {
 	},
 
 	publishModel:function(name){
-		Meteor.publish(name,function(modelName,opts){
-			opts = opts || {};
-			if(opts === false){
-				console.log("unsubscribing model : " + modelName );
-				console.log("is this server code : " + Meteor.isServer);
-				this.stop();
-			}else{
-				console.log("publishing model ",name);
-				var collection = MongoUtils.getCollection(name);
-				RESTUtils.createRestApiByCollection(collection);
-				collection.allow({
-					insert:function(){
-						return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_INSERT);
-					},
+		if(name){
+			Meteor.publish(name,function(modelName,opts){
+				opts = opts || {};
+				if(opts === false){
+					console.log("unsubscribing model : " + modelName );
+					console.log("is this server code : " + Meteor.isServer);
+					this.stop();
+				}else{
+					console.log("publishing model ",name);
+					var collection = MongoUtils.getCollection(name);
+					//RESTUtils.createRestApiByCollection(collection);
+					collection.allow({
+						insert:function(){
+							return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_INSERT);
+						},
 
-					update:function(){
-						console.log("allowing update operation for model ",name);
-						return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_UPDATE);
-					},
+						update:function(){
+							console.log("allowing update operation for model ",name);
+							return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_UPDATE);
+						},
 
-					remove: function () {
-						return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_DELETE);
-					}
+						remove: function () {
+							return PermissionHelpers.checkDefaultUserPermissions(collection,this.userId,PERMISSION_DELETE);
+						}
+					});
+					// Note that find method returns a cursor which is used reactively. If
+					//* we used find.fetch() then it returns an array which might not be used reactively*//*
+					return collection.find(opts);
+					//this.ready();
+				}
+
+				this.onStop(function(){
+					console.log("in publish model, event onStop");
 				});
-				// Note that find method returns a cursor which is used reactively. If
-				//* we used find.fetch() then it returns an array which might not be used reactively*//*
-				return collection.find(opts);
-				//this.ready();
-			}
-
-			this.onStop(function(){
-				console.log("in publish model, event onStop");
 			});
-		});
+		}else{
+			console.log("can not publish model :", name);
+		}
+
 	},
 
 	subscribeModel:function(modelName,options){
@@ -124,12 +149,7 @@ ModelHelpers = {
 	  	return value.trim();
 	},
 
-	getModel:function(name){
-		var model = MongoUtils.getModel(name);
-		ModelHelpers.addGenericMethods(model,name);
-		model.name = name;
-		return model;
-	},
+
 
 	getCurrentEditingModelData:function(){
 		return Session.get(Current_Editing_Model_Data);
@@ -146,15 +166,7 @@ ModelHelpers = {
 		});
 	},
 
-	getModelInstanceById:function(id){
-		var models = ModelHelpers.getModel(ModelDefHelpers.currentModel().name);
-		var modelInstance = models.findOne({_id:id});
-		return modelInstance;
-	},
 
-	getModelInstancesByName:function(name,options){
-		var models = ModelHelpers.getModel(name);
-		var modelInstances = models.getModelList(options);
-		return modelInstances;
-	}
+
+
 };

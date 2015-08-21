@@ -1,10 +1,3 @@
-Template.model_instance_form_buttons.helpers({
-    // this is used to show either save or update button
-    editingModel : function() {
-        return Session.get(Editing_Model);
-    }
-});
-
 Template.button_form_cancel.events({
     'click':function(evt,template){
         var currentModel = ModelDefHelpers.currentModel();
@@ -15,5 +8,12 @@ Template.button_form_cancel.events({
             RouterHelpers.showModelList(currentModel._id);
         }
         return false;
+    }
+});
+
+Template.form_buttons.helpers({
+    // this is used to show either save or update button
+    editingModel:function() {
+        return Session.get(Editing_Model)
     }
 });

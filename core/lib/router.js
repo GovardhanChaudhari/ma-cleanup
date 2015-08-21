@@ -47,15 +47,20 @@ Router.route('/models/:_id/:'+Form_Mode, function () {
     }
 }, {name: "model_instance_form"});
 
-Router.route('/modeldefs/:_id/edit', function () {
-    this.render('model_def_form_tabs', {data: ModelDefHelpers.currentModel().findOne({_id: this.params._id})});
+Router.route('/modeldefs/:_id/:' + Form_Mode, function () {
+    if(this.params[Form_Mode] === Form_Mode_New){
+        this.render('model_def_form_tabs');
+    }else{
+        this.render('model_def_form_tabs', {data: ModelDefHelpers.currentModel().findOne({_id: this.params._id})});
+    }
+
 }, {name: "model_def_form_tabs"});
 
-Router.route('/modeldefs/:_id/new', function () {
-    this.render('model_def_form_tabs');
-}, {name: "new_model_def_form_tabs"});
+Router.route('/modeldefs/:modelId/fields/:' + Form_Mode, function () {
+    this.render('field_form', {data: {modelId: this.params.modelId}});
+},{name:"field_form_new"});
 
-Router.route('/modeldefs/:modelId/fields/:index/edit', function () {
+Router.route('/modeldefs/:modelId/fields/:index/:' + Form_Mode, function () {
     //console.log("hit fields/edit route : " + this.params.index);
     this.render('field_form', {data: ModelDefHelpers.getModelDefById(this.params.modelId).fields[this.params.index]});
 }, {name: "field_form"});
@@ -65,9 +70,6 @@ Router.route('/modeldefs/:modelId/fields/:index/advanced/edit', function () {
     this.render('field_form_advanced', {data: ModelDefHelpers.getModelDefById(this.params.modelId).fields[this.params.index]});
 }, {name: "field_form_advanced"});
 
-Router.route('/modeldefs/:modelId/fields/new', function () {
-    this.render('field_form', {data: {modelId: this.params.modelId}});
-}, {name: "field_form_new"});
 
 Router.route('/models', function () {
     this.render('modelList', {data: ModelDefDb.find()});

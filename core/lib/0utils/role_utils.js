@@ -30,7 +30,7 @@ RoleUtils = {
     },
 
     getLoggedInUserRoles:function(userId){
-        debugger;
+        //debugger;
         if(userId){
             return Roles.getRolesForUser(userId);
         }else{

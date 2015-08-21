@@ -1,2 +1,14 @@
 template(name="model_def_autoform")
-   p Autoform
+    form
+        br
+        if isEditing
+            +button_add_new_field
+            br
+            label Fields:
+            +array_table(data=autoFormFields)
+
+        br
+        +data_list(label = "Owner Id" name="autoFormOwnerId" id="autoFormOwnerId" model_name="user" display_value="email" option_value="meteorUserId" parent_form="model_def_form_tabs")
+        br
+        br
+        +form_buttons

@@ -1,5 +1,6 @@
 Meteor.startup(function(){
 	console.log("initing server bootstrap");
+	DBLogger.info("initing server bootstrap");
 	console.log("found model defs: "+ ModelDefDb.find().count());
 
 	UserHelpers.createAdmin({

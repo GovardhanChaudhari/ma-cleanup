@@ -22,12 +22,7 @@ template(name="model_def_form")
 		+labeled_input_text(name="summaryProperty" parent_form="model_def_form_tabs" label = "Summary Property Name")
 		br
 		br
-		if isEditing
-			+button_update_model_def_form
-		else
-			+button_save_model_def_form
-
-		+button_cancel_model_def_form
+		+form_buttons
 
 
 

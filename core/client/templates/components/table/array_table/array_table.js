@@ -8,26 +8,31 @@ Template.array_table.rendered = function(){
     //debugger;
     var templateInstance = this;
     var tableArrayData = this.data.data;
-    ArrayUtils.each(tableArrayData,function(obj,index){
-        var row = {};
-        row["index"] = index;
-        row["data"] = obj;
-        var rows = templateInstance.rows.get();
-        rows.push(row);
-        templateInstance.rows.set(rows);
-    });
+    if(tableArrayData){
+        ArrayUtils.each(tableArrayData,function(obj,index){
+            var row = {};
+            row["index"] = index;
+            row["data"] = obj;
+            var rows = templateInstance.rows.get();
+            rows.push(row);
+            templateInstance.rows.set(rows);
+        });
 
 
-    var fieldsData = FieldHelpers.getFieldNameObjectArrayByFieldArray(tableArrayData);
+        var fieldsData = FieldHelpers.getFieldNameObjectArrayByFieldArray(tableArrayData);
 
 
-    var cols = [];
-    ArrayUtils.each(fieldsData, function (field) {
-        var columnData = {};
-        columnData["name"] = field.name;
-        cols.push(columnData);
-    });
-    templateInstance.columns.set(cols);
+        var cols = [];
+        ArrayUtils.each(fieldsData, function (field) {
+            var columnData = {};
+            columnData["name"] = field.name;
+            cols.push(columnData);
+        });
+        templateInstance.columns.set(cols);
+    }else{
+        console.log("data property of array table component is not set, rendering of array table may fail");
+    }
+
 
 };
 

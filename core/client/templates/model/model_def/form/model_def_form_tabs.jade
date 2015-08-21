@@ -6,4 +6,4 @@ template(name="model_def_form_tabs")
 
    .tab-content
       +tab_content(id="default_form" template_name="model_def_form" active="true" parent_form="model_def_form_tabs")
-      +tab_content(id="autoform" template_name="model_def_autoform")
+      +tab_content(id="autoform" template_name="model_def_autoform" parent_form="model_def_form_tabs")

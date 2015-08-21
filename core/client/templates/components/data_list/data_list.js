@@ -2,6 +2,7 @@ Template.data_list.created = FormHelpers.setParentForm;
 
 Template.data_list.rendered = function(){
 	var template = this;
+	console.count('datalist render count');
 	this.getValue = function(){
 		return ComponentHelpers.getDataListValue(template,template.data.name);
 	}

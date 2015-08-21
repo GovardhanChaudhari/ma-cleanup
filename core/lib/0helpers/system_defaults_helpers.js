@@ -1,6 +1,11 @@
-System_Defaults_Helpers = {
+SystemDefaultsHelpers = {
     getDefaultModelDefs: function () {
-        return System_Defaults_Helpers.getDefaultsByFileName(ModelDefs_Json_File_Name);
+        return SystemDefaultsHelpers.getDefaultsByFileName(ModelDefs_Json_File_Name);
+    },
+
+    getDefaultModelDefByName:function(name){
+        var modelDefs = SystemDefaultsHelpers.getDefaultModelDefs();
+        return ArrayUtils.findElementByPropertyNameAndValue(modelDefs,"name",name);
     },
 
     getDefaultsByFileName:function(fileName){
@@ -13,7 +18,7 @@ System_Defaults_Helpers = {
     },
 
     getAdminUserDefaults:function(){
-        var adminUserData = System_Defaults_Helpers.getDefaultsByFileName(Admin_User_Json_File_Name);
+        var adminUserData = SystemDefaultsHelpers.getDefaultsByFileName(Admin_User_Json_File_Name);
         return adminUserData;
     }
 };

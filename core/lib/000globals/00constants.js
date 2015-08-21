@@ -81,15 +81,7 @@ FieldNames = [
 ];
 
 
-// model def form component names
-MDF_Name="name";
-MDF_Fields="fields";
-MDF_OwnerId = "ownerId";
-MDF_ShowTableOperation = "showTableOperation";
-MDF_IsBaseModel="isBaseModel";
-MDF_IsPublished="isPublished";
-MDF_SummaryPropertyName="summaryProperty";
-MDF_Validations="validations";
+
 
 PERMISSION_READ = "read";
 PERMISSION_INSERT = "insert";
@@ -99,10 +91,17 @@ PERMISSION_DELETE = "delete";
 APP_FEATURE_EXPORT_CSV="export_to_csv";
 APP_FEATURE_IMPORT_CSV="import_from_csv";
 
+System_Data_Path="system_data";
+
 System_Config_File_Name="config.json";
-System_Data_Config_Path = "system_data/config";
+System_Data_Config_Path = System_Data_Path+ "/config";
 System_Config_File_Path=System_Data_Config_Path + "/" + System_Config_File_Name;
-System_Data_Defaults_Path = "system_data/defaults";
+System_Data_Defaults_Path = System_Data_Path+ "/defaults";
+System_Data_UI_Path = System_Data_Path+"/ui";
+System_Data_UI_ModelDef_Path = System_Data_UI_Path+"/modeldef";
+System_Data_UI_ModelDef_AutoForm_Path = System_Data_UI_ModelDef_Path+"/autoform";
+System_Data_UI_ModelDef_AutoForm_Fields_File = System_Data_UI_ModelDef_AutoForm_Path+"/fields.json";
+
 
 
 ModelDefs_Json_File_Name = "modeldefs.json";
