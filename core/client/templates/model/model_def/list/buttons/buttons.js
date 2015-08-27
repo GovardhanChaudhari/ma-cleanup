@@ -2,7 +2,7 @@ Template.button_add_model_def.events({
     'click':function(evt,template){
         Session.set(Editing_ModelDefId,null);
         Session.set(Add_Model,true);
-        RouterHelpers.showNewModelDefForm(RouterHelpers.getCurrentProcessingModelId());
+        RouterHelpers.showNewModelDefForm(RouterHelpers.getCurrentModelDefId());
     }
 });
 

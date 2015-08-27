@@ -1,12 +1,15 @@
 ModelDefHelpers={
 	currentModel:function(){
 		if(ModelDefHelpers.hasModelDefs()){
-			var currentModel =  ModelDefDb.findOne(Session.get(Current_Model_Id));
-			if(currentModel){
-			}else{
-				currentModel = ModelDefDb.findOne({name:ModelDb_Name});
-			}
+			var currentModel = ModelDefHelpers.getModelDefById(RouterHelpers.getCurrentModelDefId());
 			var mongoModel = MongoUtils.getModel(currentModel.name);
+
+			if(!mongoModel){
+				console.log("could not get mongo model by name : ",currentModel.name);
+			}
+
+			console.count("currentModel accessed ********");
+			//DBLogger.debug("mongo model : " + mongoModel);
 			currentModel = ObjectUtils.merge(mongoModel,currentModel);
 			ModelHelpers.addGenericMethods(currentModel,currentModel.name);
 			return currentModel;
@@ -77,11 +80,12 @@ ModelDefHelpers={
 	},
 
 	getCurrentModelDefId:function(){
-		return ModelDefHelpers.currentModel()._id;
+		//return ModelDefHelpers.currentModel()._id;
+		return RouterHelpers.getCurrentModelDefId();
 	},
 
 	getCurrentModelName:function(){
-		return ModelDefHelpers.currentModel().name;
+		return ModelDefHelpers.getModelDefById(RouterHelpers.getCurrentModelDefId()).name
 	},
 
 	getCurrentModelFields:function(options){

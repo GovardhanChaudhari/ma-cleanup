@@ -7,6 +7,7 @@ MongoUtils = {
 		var model = MongoUtils.getModel(modelName);
 		if(model){
 		}else{
+			DBLogger.debug("mongo model is not created at client, creating it: ",modelName);
 			new MongoUtils.createModel(modelName);
 		}
 	},
@@ -22,12 +23,12 @@ MongoUtils = {
 	},
 
 	observeAdd:function(modelName){
-		console.log("adding add observer for model : " + modelName);
+		DBLogger.debug("adding add observer for model : " + modelName);
 		var userCursor = Mongo.Collection.get(modelName).find();
 		userCursor.observe(
 			{
 				added:function(user,beforeIndex){
-					console.log("adding user to model db:" + user.user_name);
+					DBLogger.debug("adding user to model db:" + user.user_name);
 				}
 			}
 		);

@@ -56,7 +56,6 @@ var formSaveAction = function(template){
 };
 
 var formUpdateAction = function(template){
-    //modelFormTemplate = TemplateHelpers.getParentTemplate(template,"model_instance_form");
     modelFormTemplate = TemplateHelpers.getParentFormTemplate(template);
     //debugger;
     var data = modelFormTemplate.getValue();
@@ -104,7 +103,7 @@ Template.model_instance_form_body.events({
            }
 
        }else{
-           RouterHelpers.showModelList(currentModelId);
+           RouterHelpers.showModelList();
        }
        //prevent default action
        return false;

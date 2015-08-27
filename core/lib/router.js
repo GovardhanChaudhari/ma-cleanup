@@ -39,7 +39,7 @@ Router.route('/models/:_id', function () {
     this.render('modelList', {data: ModelDefDb.findOne({_id: this.params._id})});
 }, {name: "showmodel"});
 
-Router.route('/models/:_id/:'+Form_Mode, function () {
+Router.route('/models/:_id/model/:modelInstanceId/:'+Form_Mode, function () {
     if(this.params[Form_Mode] === Form_Mode_New){
         this.render('model_instance_form');
     }else{
@@ -47,11 +47,20 @@ Router.route('/models/:_id/:'+Form_Mode, function () {
     }
 }, {name: "model_instance_form"});
 
-Router.route('/modeldefs/:_id/:' + Form_Mode, function () {
+/*Router.route('/modeldefs/:_id/:' + Form_Mode, function () {
     if(this.params[Form_Mode] === Form_Mode_New){
         this.render('model_def_form_tabs');
     }else{
         this.render('model_def_form_tabs', {data: ModelDefHelpers.currentModel().findOne({_id: this.params._id})});
+    }
+
+}, {name: "model_def_form_tabs"});*/
+
+Router.route('/modeldefs/:_id/model/:_modelId/:' + Form_Mode, function () {
+    if(this.params[Form_Mode] === Form_Mode_New){
+        this.render('model_def_form_tabs');
+    }else{
+        this.render('model_def_form_tabs', {data: ModelDefHelpers.currentModel().findOne({_id: this.params._modelId})});
     }
 
 }, {name: "model_def_form_tabs"});

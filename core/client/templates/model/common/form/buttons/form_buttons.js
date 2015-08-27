@@ -5,7 +5,7 @@ Template.button_form_cancel.events({
         if(MobileUtils.isPhoneOrTablet()){
             MobileRouteHelpers.showModelInstanceList(currentModel._id);
         }else{
-            RouterHelpers.showModelList(currentModel._id);
+            RouterHelpers.showModelList();
         }
         return false;
     }

@@ -18,7 +18,7 @@ var formSaveAction = function(template){
 
 var formUpdateAction = function(template){
 	var modelFormTemplate = TemplateHelpers.getParentFormTemplate(template);
-	var editingModelDefId = RouterHelpers.getCurrentProcessingModelId();
+	var editingModelDefId = RouterHelpers.getCurrentModelDefId();
 
 	var data = modelFormTemplate.getValue();
 	debugger;
@@ -52,7 +52,7 @@ Template.model_def_form.events({
 			}
 
 		}else{
-			RouterHelpers.showModelList(currentModelId);
+			RouterHelpers.showModelList();
 		}
 		//prevent default action
 		return false;

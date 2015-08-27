@@ -3,11 +3,7 @@ Template.registerHelper("isPhoneOrTablet",function(){
 });
 
 Template.registerHelper("modelName",function(){
-	var currentModel = ModelDefHelpers.currentModel();
-	var modelName = ModelDb_Name;
-	if(currentModel){
-		modelName = currentModel.name;
-	}
+	var modelName = ModelDefHelpers.getCurrentModelName() ||  ModelDb_Name;
 	return modelName;
 });
 
@@ -22,7 +18,7 @@ Template.registerHelper("currentYear",function(){
 
 Template.registerHelper("isModelDef",function(){
 	//debugger;
-	return ModelDefHelpers.isModelDefinition(ModelDefHelpers.currentModel().name);
+	return ModelDefHelpers.isModelDefinition(ModelDefHelpers.getCurrentModelName());
 });
 
 
@@ -53,13 +49,3 @@ Template.registerHelper("canDelete",function(){
 Template.registerHelper("isAdminRole",function(){
 	return RoleUtils.isAdminRole();
 });
-
-/*Template.registerHelper("fields",function(){
-	return ModelHelpers.currentModel().fields;
-});*/
-
-
-
-/*Template.registerHelper("modelValue",function(fieldName){
-	return TemplateHelpers.getDomainValue(ModelHelpers.currentModel(),Session,Editing_Model,fieldName);
-});*/
